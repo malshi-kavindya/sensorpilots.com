@@ -7,26 +7,26 @@ const footerSections = [
     title: 'Platform',
     links: [
       { label: 'Product', href: '/product' },
-      { label: 'Features', href: '/features' },
-      { label: 'Pricing', href: '/pricing' },
+      { label: 'Features', href: '/#features' },
+      { label: 'Pricing', href: '/#pricing' },
       { label: 'API Docs', href: '/api-docs' },
     ],
   },
   {
     title: 'Resources',
     links: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Whitepapers', href: '/resources' },
-      { label: 'Case Studies', href: '/resources' },
-      { label: 'Technical Guides', href: '/resources' },
+      { label: 'Blog', href: '/#blog' },
+      { label: 'Whitepapers', href: '/#resources' },
+      { label: 'Case Studies', href: '/#resources' },
+      { label: 'Technical Guides', href: '/#resources' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'About', href: '/#about' },
+      { label: 'Careers', href: '/#careers' },
+      { label: 'Contact', href: '/#contact' },
     ],
   },
   {

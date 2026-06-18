@@ -6,12 +6,12 @@ import { Menu, X, ChevronRight } from 'lucide-react';
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Product', href: '/product' },
-  { label: 'Features', href: '/features' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Resources', href: '/resources' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Pricing', href: '/#pricing' },
+  { label: 'Blog', href: '/#blog' },
+  { label: 'Resources', href: '/#resources' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 export default function Navbar() {
@@ -25,9 +25,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const isActive = (href: string) => {
+    if (href.startsWith('/#')) {
+      const hash = '#' + href.split('#')[1];
+      return location.pathname === '/' && location.hash === hash;
+    }
+    return location.pathname === href;
+  };
+
   useEffect(() => {
     setMobileOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   return (
     <motion.header
@@ -54,13 +62,13 @@ export default function Navbar() {
               key={link.href}
               to={link.href}
               className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md ${
-                location.pathname === link.href
+                isActive(link.href)
                   ? 'text-text-primary'
                   : 'text-soft-industrial-gray hover:text-text-primary'
               }`}
             >
               {link.label}
-              {location.pathname === link.href && (
+              {isActive(link.href) && (
                 <motion.div
                   layoutId="navbar-indicator"
                   className="absolute bottom-0 left-2 right-2 h-[2px] bg-warm-signal-alert rounded-full"
@@ -73,7 +81,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center gap-4">
           <Link
-            to="/contact"
+            to="/#contact"
             className="group flex items-center gap-2 px-5 py-2.5 bg-primary-dark-teal hover:bg-primary-dark-teal/80 text-text-primary text-sm font-semibold rounded-lg transition-all duration-300"
           >
             Book Demo
@@ -104,7 +112,7 @@ export default function Navbar() {
                   key={link.href}
                   to={link.href}
                   className={`px-3 py-3 text-sm font-medium rounded-lg transition-colors ${
-                    location.pathname === link.href
+                    isActive(link.href)
                       ? 'text-text-primary bg-primary-dark-teal/20'
                       : 'text-soft-industrial-gray hover:text-text-primary hover:bg-white/5'
                   }`}
@@ -113,7 +121,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                to="/#contact"
                 className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-primary-dark-teal text-text-primary text-sm font-semibold rounded-lg"
               >
                 Book Demo
