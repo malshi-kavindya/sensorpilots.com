@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-text-primary font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glassmorphic {
+    @apply bg-background/60 backdrop-blur-xl border border-white/10;
+  }
+  .gradient-teal-shadow {
+    background: linear-gradient(135deg, #104C64, #202410);
+  }
+  .gradient-copper-alert {
+    background: linear-gradient(135deg, #C0754D, #D59080);
+  }
+  .gradient-teal-gray {
+    background: linear-gradient(135deg, #104C64, #C6C6D0);
+  }
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #104C64, #C6C6D0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .text-gradient-copper {
+    background: linear-gradient(135deg, #C0754D, #D59080);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D1620;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #104C64;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C0754D;
+}
