@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Product', href: '/product' },
   { label: 'Features', href: '/#features' },
   { label: 'Pricing', href: '/#pricing' },
-  { label: 'Blog', href: '/#blog' },
-  { label: 'Resources', href: '/#resources' },
   { label: 'About', href: '/#about' },
   { label: 'Contact', href: '/#contact' },
 ];
@@ -43,35 +41,32 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'glassmorphic' : 'bg-transparent'
+        scrolled
+          ? 'bg-[rgba(11,24,32,0.85)] backdrop-blur-md border-b border-white/[0.06]'
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-md bg-primary-dark-teal flex items-center justify-center">
-            <span className="font-mono font-bold text-text-primary text-sm">SP</span>
-          </div>
-          <span className="font-heading font-bold text-lg text-text-primary tracking-tight">
-            SensorPilots
-          </span>
+      <div className="max-w-7xl mx-auto px-6 md:px-9 py-4 flex items-center justify-between">
+        <Link to="/" className="font-mono text-[12px] text-white/35 tracking-[0.1em] no-underline hover:text-white/55 transition-colors">
+          SYNTHOS
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-[22px]">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md ${
+              className={`relative text-[13px] no-underline transition-colors duration-300 ${
                 isActive(link.href)
-                  ? 'text-text-primary'
-                  : 'text-soft-industrial-gray hover:text-text-primary'
+                  ? 'text-white/75'
+                  : 'text-white/35 hover:text-white/75'
               }`}
             >
               {link.label}
               {isActive(link.href) && (
                 <motion.div
                   layoutId="navbar-indicator"
-                  className="absolute bottom-0 left-2 right-2 h-[2px] bg-warm-signal-alert rounded-full"
+                  className="absolute -bottom-[2px] left-0 right-0 h-[1.5px] bg-[#e87040] rounded-full"
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
@@ -79,21 +74,28 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2">
+          {['✕', '◎', '⊙'].map((s, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-[5px] px-3 py-[5px] rounded-full border-[0.5px] border-white/10 bg-white/[0.04] text-[12px] text-white/38 cursor-pointer select-none"
+            >
+              {s}
+            </span>
+          ))}
           <Link
             to="/#contact"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-primary-dark-teal hover:bg-primary-dark-teal/80 text-text-primary text-sm font-semibold rounded-lg transition-all duration-300"
+            className="flex items-center gap-[5px] px-3 py-[5px] rounded-full border-[0.5px] border-[rgba(16,76,100,0.55)] bg-[rgba(16,76,100,0.35)] text-[12px] text-[rgba(200,225,235,0.75)] no-underline cursor-pointer select-none"
           >
-            Book Demo
-            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            Get Started ⊞
           </Link>
         </div>
 
         <button
-          className="lg:hidden p-2 text-text-primary"
+          className="lg:hidden p-2 text-white/75"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
@@ -104,17 +106,18 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden glassmorphic border-t border-white/5"
+            className="lg:hidden border-t border-white/[0.06]"
+            style={{ background: 'rgba(11,24,32,0.95)' }}
           >
             <div className="px-6 py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-3 py-3 text-sm font-medium rounded-lg transition-colors ${
+                  className={`px-3 py-3 text-[13px] no-underline rounded-lg transition-colors ${
                     isActive(link.href)
-                      ? 'text-text-primary bg-primary-dark-teal/20'
-                      : 'text-soft-industrial-gray hover:text-text-primary hover:bg-white/5'
+                      ? 'text-white/75 bg-[rgba(16,76,100,0.35)]'
+                      : 'text-white/35 hover:text-white/75 hover:bg-white/5'
                   }`}
                 >
                   {link.label}
@@ -122,10 +125,9 @@ export default function Navbar() {
               ))}
               <Link
                 to="/#contact"
-                className="mt-3 flex items-center justify-center gap-2 px-5 py-3 bg-primary-dark-teal text-text-primary text-sm font-semibold rounded-lg"
+                className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-full border-[0.5px] border-[rgba(16,76,100,0.55)] bg-[rgba(16,76,100,0.35)] text-[12px] text-[rgba(200,225,235,0.75)] no-underline"
               >
-                Book Demo
-                <ChevronRight className="w-4 h-4" />
+                Get Started ⊞
               </Link>
             </div>
           </motion.div>
