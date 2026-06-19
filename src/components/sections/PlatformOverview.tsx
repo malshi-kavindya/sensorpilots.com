@@ -38,8 +38,8 @@ export default function PlatformOverview() {
                 className="relative"
               >
                 <div className="flex flex-col items-center text-center group">
-                  <div className={`w-16 h-16 rounded-xl ${step.color} border border-white/10 flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                    <step.icon className="w-7 h-7 text-text-primary" />
+                  <div className="w-16 h-16 rounded-xl bg-transparent flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300 border border-white/15" style={{ outline: '1px solid rgba(255,255,255,0.08)', outlineOffset: '-3px' }}>
+                    <step.icon className="w-7 h-7 text-[#e87040]" />
                   </div>
                   <h4 className="font-heading font-semibold text-text-primary text-sm">{step.label}</h4>
                   {i < steps.length - 1 && (
