@@ -110,7 +110,7 @@ export default function HeroSection() {
             Industrial AI Platform
           </div>
 
-          <h1 className="text-[72px] font-black leading-[0.96] text-[#edf2f5] tracking-[-0.035em] mb-6">
+          <h1 className="text-[72px] font-black leading-[0.96] text-[#edf2f5] tracking-[0.08em] mb-6">
             Predictive<br />Maintenance<br />
             <span className="bg-gradient-to-r from-[#c95a20] via-[#f07038] to-[#c04818] bg-clip-text text-transparent">
               Intelligence
