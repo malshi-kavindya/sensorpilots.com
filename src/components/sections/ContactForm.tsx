@@ -1,17 +1,15 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, CheckCircle2, Send } from 'lucide-react';
+import { useForm, ValidationError } from '@formspree/react';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 export default function ContactForm() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [formType, setFormType] = useState<'demo' | 'sales' | 'support'>('demo');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+  const [cfToken, setCfToken] = useState<string | null>(null);
+  const [state, handleSubmit, reset] = useForm('meebqqaz');
 
   return (
     <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
@@ -74,7 +72,7 @@ export default function ContactForm() {
               <div className="flex items-center gap-2 mb-6">
                 <div className="flex items-center p-1 rounded-lg bg-white/5 border border-white/10">
                   {(['demo', 'sales', 'support'] as const).map((type) => (
-                    <button key={type} onClick={() => { setFormType(type); setSubmitted(false); }}
+                    <button key={type} onClick={() => { setFormType(type); reset(); setCfToken(null); }}
                       className={`px-3 py-1.5 rounded-md text-xs font-medium capitalize transition-all ${formType === type ? 'bg-primary-dark-teal text-text-primary' : 'text-soft-industrial-gray hover:text-text-primary'}`}>
                       {type === 'demo' ? 'Book Demo' : type === 'sales' ? 'Sales Inquiry' : 'Support'}
                     </button>
@@ -82,7 +80,7 @@ export default function ContactForm() {
                 </div>
               </div>
 
-              {submitted ? (
+              {state.succeeded ? (
                 <div className="text-center py-12">
                   <CheckCircle2 className="w-16 h-16 text-primary-dark-teal mx-auto mb-4" />
                   <h3 className="font-heading font-semibold text-xl text-text-primary mb-2">Message Sent!</h3>
@@ -90,31 +88,44 @@ export default function ContactForm() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <input type="hidden" name="form-type" value={formType} />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-text-primary mb-1">First Name</label>
-                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="John" />
+                      <input type="text" name="first-name" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="John" />
+                      <ValidationError field="first-name" errors={state.errors} />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-text-primary mb-1">Last Name</label>
-                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Doe" />
+                      <input type="text" name="last-name" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Doe" />
+                      <ValidationError field="last-name" errors={state.errors} />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Email</label>
-                    <input type="email" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="john@company.com" />
+                    <input type="email" name="email" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="john@company.com" />
+                    <ValidationError field="email" errors={state.errors} />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Company</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Acme Manufacturing" />
+                    <input type="text" name="company" className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Acme Manufacturing" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Message</label>
-                    <textarea rows={4} required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors resize-none" placeholder="Tell us about your project..." />
+                    <textarea name="message" rows={4} required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors resize-none" placeholder="Tell us about your project..." />
+                    <ValidationError field="message" errors={state.errors} />
                   </div>
-                  <button type="submit" className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary-dark-teal hover:bg-primary-dark-teal/80 text-text-primary font-semibold rounded-lg transition-all">
+                  <input type="hidden" name="cf-turnstile-response" value={cfToken ?? ''} />
+                  <div className="flex justify-center">
+                    <Turnstile
+                      siteKey="0x4AAAAAADo7nFOXDFSNamTm"
+                      onSuccess={setCfToken}
+                      options={{ theme: 'dark' }}
+                    />
+                  </div>
+                  <button type="submit" disabled={state.submitting || !cfToken} className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary-dark-teal hover:bg-primary-dark-teal/80 disabled:opacity-50 disabled:cursor-not-allowed text-text-primary font-semibold rounded-lg transition-all">
                     <Send className="w-4 h-4" />
-                    Send Message
+                    {state.submitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}
