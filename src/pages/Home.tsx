@@ -2,11 +2,9 @@ import HeroSection from '../components/sections/HeroSection';
 import TrustBar from '../components/sections/TrustBar';
 import PlatformOverview from '../components/sections/PlatformOverview';
 import IndustrialProblem from '../components/sections/IndustrialProblem';
-import SolutionSection from '../components/sections/SolutionSection';
 import CommandCenterPreview from '../components/sections/CommandCenterPreview';
 import HowItWorks from '../components/sections/HowItWorks';
 import IndustryUseCases from '../components/sections/IndustryUseCases';
-import ROIMetrics from '../components/sections/ROIMetrics';
 import Testimonials from '../components/sections/Testimonials';
 import BlogContent from '../components/sections/BlogContent';
 import PricingTiers from '../components/sections/PricingTiers';
@@ -29,11 +27,9 @@ export default function Home() {
       <TrustBar />
       <PlatformOverview />
       <IndustrialProblem />
-      <SolutionSection />
       <CommandCenterPreview />
       <HowItWorks />
       <IndustryUseCases />
-      <ROIMetrics />
       <Testimonials />
       <BlogContent />
       <PricingTiers />
