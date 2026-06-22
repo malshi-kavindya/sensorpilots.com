@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Wifi, Database, Brain, AlertTriangle, Wrench, TrendingUp } from 'lucide-react';
-import SectionTitle from '../SectionTitle';
+
 import AnimatedCounter from '../AnimatedCounter';
 
 const steps = [
@@ -39,11 +39,17 @@ export default function HowItWorks() {
       <div className="absolute bottom-1/3 -left-32 w-[350px] h-[350px] bg-industrial-copper/5 rounded-full blur-[100px]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle
-          title="How It Works"
-          subtitle="From sensor to intelligence in five steps — backed by measurable enterprise results"
-          centered
-        />
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.hw-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.hw-section-tag::before,.hw-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.hw-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+.hw-sub{font-size:13px;color:rgba(175,205,218,0.45);text-align:center;max-width:480px;margin:0 auto 60px;line-height:1.65}
+        `}</style>
+
+        <div className="hw-section-tag">How It Works</div>
+        <h2 className="hw-title">How It Works</h2>
+        <p className="hw-sub">From sensor to intelligence in five steps — backed by measurable enterprise results</p>
 
         {/* ── Timeline Steps ── */}
         <div className="relative">

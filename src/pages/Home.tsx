@@ -26,24 +26,26 @@ export default function Home() {
       <HeroSection />
       <TrustBar />
       <PlatformOverview />
+      <div id="about">
+        <StorySection />
+        <MissionVision />
+      </div>
       <IndustrialProblem />
+      
       <CommandCenterPreview />
       <HowItWorks />
       <IndustryUseCases />
-      <Testimonials />
-      <BlogContent />
-      <PricingTiers />
-      <FinalCTA />
       <div id="features">
         <FeatureGrid />
         <PlatformSpecs />
       </div>
+      
+      <PricingTiers />
+     
+      <BlogContent />
+      <Testimonials />
       <div id="resources">
-        <NewsletterCTA />
-      </div>
-      <div id="about">
-        <StorySection />
-        <MissionVision />  
+        <FinalCTA />
       </div>
       <div id="contact">
         <ContactForm />

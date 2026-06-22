@@ -1,242 +1,166 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import {
-  Factory, Wifi, Database, Cpu, Brain, Activity,
-  Gauge, AlertTriangle, Clock, Lightbulb, ArrowRight,
-} from 'lucide-react';
-import SectionTitle from '../SectionTitle';
-
-const steps = [
-  { label: 'Machines', icon: Factory },
-  { label: 'IoT Sensors', icon: Wifi },
-  { label: 'Data Pipeline', icon: Database },
-  { label: 'NVIDIA AI', icon: Cpu },
-  { label: 'AI Models', icon: Brain },
-  { label: 'Intel.', icon: Activity },
-];
-
-const cards = [
-  {
-    title: 'Predictive Maintenance',
-    desc: 'AI models forecast failures before they occur',
-    icon: Brain,
-  },
-  {
-    title: 'Sensor Analytics',
-    desc: 'Real-time processing of multi-sensor streams',
-    icon: Activity,
-  },
-  {
-    title: 'Machine Health Monitoring',
-    desc: 'Continuous health scoring across all assets',
-    icon: Gauge,
-  },
-  {
-    title: 'Anomaly Detection',
-    desc: 'Statistical and ML-based outlier identification',
-    icon: AlertTriangle,
-  },
-  {
-    title: 'Failure Prediction',
-    desc: 'Time-to-failure estimates with confidence intervals',
-    icon: Clock,
-  },
-  {
-    title: 'Industrial AI Insights',
-    desc: 'Actionable intelligence for maintenance teams',
-    icon: Lightbulb,
-  },
-];
-
 export default function PlatformOverview() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
-      {/* Background — dot-grid + glow orbs */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary-dark-teal/[0.03] to-background" />
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            'radial-gradient(circle, rgba(16,76,100,0.12) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-        }}
-      />
-      <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-primary-dark-teal/8 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-20 w-[400px] h-[400px] bg-industrial-copper/6 rounded-full blur-[120px]" />
+    <>
+      <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.po-root{background:#0b1820;padding:80px 48px 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.po-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.po-section-tag::before,.po-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.po-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+.po-sub{font-size:13px;color:rgba(175,205,218,0.45);text-align:center;max-width:480px;margin:0 auto 60px;line-height:1.65}
+.pipeline-rail{position:relative;display:flex;align-items:center;justify-content:space-between;margin-bottom:60px;padding:0 4px}
+.pipeline-line{position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.06);z-index:0;transform:translateY(-50%)}
+.pipeline-line-animated{position:absolute;top:50%;left:0;right:0;height:1px;z-index:0;transform:translateY(-50%);overflow:hidden}
+.pipeline-dashes{width:200%;height:1px;background:repeating-linear-gradient(90deg,rgba(16,76,100,0.0) 0px,rgba(16,76,100,0.0) 8px,rgba(16,76,100,0.55) 8px,rgba(16,76,100,0.55) 14px);animation:slidedash 3s linear infinite}
+@keyframes slidedash{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pipeline-node{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;flex:none}
+.node-circle{width:52px;height:52px;border-radius:50%;background:#0b1820;border:1px solid rgba(16,76,100,0.55);display:flex;align-items:center;justify-content:center;transition:border-color 0.2s}
+.node-circle:hover{border-color:rgba(232,112,64,0.7)}
+.node-circle i{font-size:18px;color:rgba(16,76,100,0.9)}
+.node-circle:hover i{color:#e87040}
+.node-circle.highlight{border-color:rgba(232,112,64,0.6);background:rgba(232,112,64,0.07)}
+.node-circle.highlight i{color:#e87040}
+.node-num{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:#e87040;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:500;color:#fff;display:flex;align-items:center;justify-content:center}
+.node-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(175,205,218,0.35);letter-spacing:0.07em;text-transform:uppercase;text-align:center}
+.pipeline-node:hover .node-label{color:rgba(175,205,218,0.65)}
+.divider-row{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+.divider-line{flex:1;height:0.5px;background:rgba(255,255,255,0.05)}
+.divider-badge{display:flex;align-items:center;gap:8px;padding:7px 14px;border:0.5px solid rgba(16,76,100,0.4);border-radius:99px;background:rgba(16,76,100,0.08)}
+.divider-badge i{font-size:14px;color:rgba(232,112,64,0.65)}
+.divider-badge span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(175,205,218,0.4);letter-spacing:0.06em}
+.cap-header{text-align:center;margin-bottom:36px}
+.cap-title{font-size:20px;font-weight:700;color:#edf2f5;margin-bottom:6px}
+.cap-sub{font-size:12px;color:rgba(175,205,218,0.38);max-width:400px;margin:0 auto;line-height:1.6}
+.bento{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:auto auto;gap:10px}
+.bcard{background:rgba(255,255,255,0.025);border:0.5px solid rgba(255,255,255,0.07);border-radius:12px;padding:22px 20px;transition:border-color 0.2s,background 0.2s;cursor:default;position:relative;overflow:hidden}
+.bcard::before{content:'';position:absolute;inset:0;border-radius:12px;opacity:0;transition:opacity 0.3s;background:rgba(16,76,100,0.05)}
+.bcard:hover{border-color:rgba(16,76,100,0.38)}
+.bcard:hover::before{opacity:1}
+.bcard.featured{grid-column:span 3;grid-row:span 2;background:rgba(16,76,100,0.1);border-color:rgba(16,76,100,0.3);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between}
+.bcard.wide{grid-column:span 3}
+.bcard.normal{grid-column:span 2}
+.bcard-icon-wrap{width:38px;height:38px;border-radius:8px;background:rgba(16,76,100,0.2);border:0.5px solid rgba(16,76,100,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0}
+.bcard-icon-wrap i{font-size:16px;color:rgba(16,76,100,0.9)}
+.bcard:hover .bcard-icon-wrap i{color:#e87040}
+.bcard.featured .bcard-icon-wrap{width:48px;height:48px;border-radius:10px;margin-bottom:20px}
+.bcard.featured .bcard-icon-wrap i{font-size:20px}
+.bcard-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(232,112,64,0.55);margin-bottom:8px}
+.bcard-title{font-size:14px;font-weight:700;color:#edf2f5;margin-bottom:6px;line-height:1.3}
+.bcard.featured .bcard-title{font-size:20px;margin-bottom:10px}
+.bcard-desc{font-size:11px;color:rgba(175,205,218,0.38);line-height:1.6}
+.bcard.featured .bcard-desc{font-size:13px;color:rgba(175,205,218,0.45);line-height:1.65}
+.bcard-bottom{margin-top:auto;padding-top:24px}
+.bcard-metric{font-size:32px;font-weight:900;color:#edf2f5;letter-spacing:-0.03em;font-family:'IBM Plex Sans',sans-serif}
+.bcard-metric-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(175,205,218,0.3);letter-spacing:0.07em;text-transform:uppercase;margin-top:2px}
+.nvidia-row{display:flex;justify-content:center;margin-top:48px}
+.nvidia-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:0.5px solid rgba(16,76,100,0.35);border-radius:99px;background:rgba(16,76,100,0.07)}
+.nvidia-badge i{font-size:14px;color:#e87040}
+.nvidia-badge span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(175,205,218,0.38);letter-spacing:0.06em}
+      `}</style>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <SectionTitle
-          title="Platform Architecture &amp; Intelligence Engine"
-          subtitle="From raw sensor signals to predictive maintenance intelligence — powered by six core AI capabilities"
-          centered
-        />
+      <h2 className="sr-only">Platform architecture and intelligence engine — six core AI capabilities from sensor to insight</h2>
 
-        {/* ── Pipeline (desktop) ── */}
-        <div className="hidden lg:flex items-center justify-center mt-16">
-          {steps.map((step, i) => (
-            <div key={step.label} className="flex items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center group"
-              >
-                <div className="relative">
-                  <div
-                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-dark-teal/25 to-primary-dark-teal/5
-                               border border-primary-dark-teal/30 flex items-center justify-center
-                               group-hover:border-industrial-copper/40 group-hover:shadow-lg
-                               group-hover:shadow-primary-dark-teal/15 transition-all duration-300"
-                  >
-                    <step.icon className="w-6 h-6 text-[#e87040]" />
-                  </div>
-                  <div
-                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-industrial-copper
-                               text-white text-[10px] font-bold flex items-center justify-center shadow-lg"
-                  >
-                    {i + 1}
-                  </div>
-                </div>
-                <span className="font-heading text-[11px] text-text-primary mt-2.5 font-semibold whitespace-nowrap">
-                  {step.label}
-                </span>
-              </motion.div>
+      <div className="po-root">
+        <div className="po-section-tag">Platform Architecture</div>
+        <h2 className="po-title">Architecture &amp; Intelligence Engine</h2>
+        <p className="po-sub">From raw sensor signals to predictive maintenance intelligence — six core AI capabilities in a unified pipeline</p>
 
-              {i < steps.length - 1 && (
-                <div className="mx-3 text-industrial-copper/40">
-                  <ArrowRight className="w-5 h-5" />
-                </div>
-              )}
+        <div className="pipeline-rail">
+          <div className="pipeline-line" />
+          <div className="pipeline-line-animated"><div className="pipeline-dashes" /></div>
+
+          <div className="pipeline-node">
+            <div className="node-circle"><span className="node-num">1</span><i className="ti ti-building-factory-2" aria-hidden="true" /></div>
+            <span className="node-label">Machines</span>
+          </div>
+          <div className="pipeline-node">
+            <div className="node-circle"><span className="node-num">2</span><i className="ti ti-wifi" aria-hidden="true" /></div>
+            <span className="node-label">IoT Sensors</span>
+          </div>
+          <div className="pipeline-node">
+            <div className="node-circle"><span className="node-num">3</span><i className="ti ti-database" aria-hidden="true" /></div>
+            <span className="node-label">Data Pipeline</span>
+          </div>
+          <div className="pipeline-node">
+            <div className="node-circle highlight"><span className="node-num">4</span><i className="ti ti-cpu" aria-hidden="true" /></div>
+            <span className="node-label">NVIDIA AI</span>
+          </div>
+          <div className="pipeline-node">
+            <div className="node-circle highlight"><span className="node-num">5</span><i className="ti ti-brain" aria-hidden="true" /></div>
+            <span className="node-label">AI Models</span>
+          </div>
+          <div className="pipeline-node">
+            <div className="node-circle highlight"><span className="node-num">6</span><i className="ti ti-activity" aria-hidden="true" /></div>
+            <span className="node-label">Intel.</span>
+          </div>
+        </div>
+
+        <div className="divider-row">
+          <div className="divider-line" />
+          <div className="divider-badge">
+            <i className="ti ti-cpu" aria-hidden="true" />
+            <span>Intelligence Layer</span>
+          </div>
+          <div className="divider-line" />
+        </div>
+
+        <div className="cap-header">
+          <div className="cap-title">Intelligence Capabilities</div>
+          <p className="cap-sub">Six core capabilities that transform raw data into actionable maintenance intelligence</p>
+        </div>
+
+        <div className="bento">
+          <div className="bcard featured">
+            <div>
+              <div className="bcard-tag">Core Capability</div>
+              <div className="bcard-icon-wrap"><i className="ti ti-brain" aria-hidden="true" /></div>
+              <div className="bcard-title">Predictive Maintenance</div>
+              <div className="bcard-desc">AI models forecast equipment failures before they occur, giving maintenance teams the lead time to act — not react. Combines vibration, thermal, and operational signals into a single failure probability score.</div>
             </div>
-          ))}
-        </div>
-
-        {/* ── Pipeline (mobile) ── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-16 lg:hidden">
-          {steps.map((step, i) => (
-            <motion.div
-              key={step.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1 }}
-              className="flex flex-col items-center group"
-            >
-              <div className="relative">
-                <div
-                  className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-dark-teal/25 to-primary-dark-teal/5
-                             border border-primary-dark-teal/30 flex items-center justify-center
-                             group-hover:border-industrial-copper/40 transition-all duration-300"
-                >
-                  <step.icon className="w-5 h-5 text-[#e87040]" />
-                </div>
-                <div
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-industrial-copper
-                             text-white text-[10px] font-bold flex items-center justify-center shadow-lg"
-                >
-                  {i + 1}
-                </div>
-              </div>
-              <span className="font-heading text-[10px] text-text-primary mt-2 font-semibold text-center">
-                {step.label}
-              </span>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ── Divider ── */}
-        <div className="relative my-14">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/5" />
-          </div>
-          <div className="relative flex justify-center">
-            <div className="px-3 bg-background">
-              <div
-                className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-dark-teal/20 to-background
-                           border border-primary-dark-teal/30 flex items-center justify-center"
-              >
-                <Cpu className="w-3.5 h-3.5 text-industrial-copper/70" />
-              </div>
+            <div className="bcard-bottom">
+              <div className="bcard-metric">14 days</div>
+              <div className="bcard-metric-label">Avg. failure prediction lead time</div>
             </div>
           </div>
-        </div>
 
-        {/* ── Intelligence Capabilities ── */}
-        <div>
-          <motion.h3
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.5 }}
-            className="font-heading font-semibold text-xl text-center text-text-primary mb-1"
-          >
-            Intelligence Capabilities
-          </motion.h3>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.55 }}
-            className="text-center text-soft-industrial-gray text-sm mb-10 max-w-xl mx-auto"
-          >
-            Six core capabilities that transform raw data into actionable maintenance intelligence
-          </motion.p>
+          <div className="bcard wide">
+            <div className="bcard-icon-wrap"><i className="ti ti-activity" aria-hidden="true" /></div>
+            <div className="bcard-title">Sensor Analytics</div>
+            <div className="bcard-desc">Real-time processing of multi-sensor streams at scale</div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {cards.map((card, i) => (
-              <motion.div
-                key={card.title}
-                initial={{ opacity: 0, y: 25 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.7 + i * 0.07 }}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group relative p-5 rounded-xl bg-white/[0.03] border border-white/[0.06]
-                           hover:border-primary-dark-teal/30 hover:bg-white/[0.06]
-                           transition-all duration-300 overflow-hidden"
-              >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500
-                             bg-gradient-to-br from-primary-dark-teal/5 via-transparent to-industrial-copper/5
-                             pointer-events-none"
-                />
-                <div className="relative z-10">
-                  <div
-                    className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary-dark-teal/20 to-primary-dark-teal/5
-                               border border-primary-dark-teal/20 flex items-center justify-center mb-3
-                               group-hover:border-industrial-copper/30 transition-colors"
-                  >
-                    <card.icon
-                      className="w-5 h-5 text-primary-dark-teal group-hover:text-[#e87040]
-                                 transition-colors duration-300"
-                    />
-                  </div>
-                  <h4 className="font-heading font-semibold text-base text-text-primary mb-1.5">
-                    {card.title}
-                  </h4>
-                  <p className="text-xs text-soft-industrial-gray leading-relaxed">{card.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <div className="bcard normal">
+            <div className="bcard-icon-wrap"><i className="ti ti-gauge" aria-hidden="true" /></div>
+            <div className="bcard-title">Machine Health</div>
+            <div className="bcard-desc">Continuous health scoring across all assets</div>
+          </div>
+
+          <div className="bcard normal">
+            <div className="bcard-icon-wrap"><i className="ti ti-alert-triangle" aria-hidden="true" /></div>
+            <div className="bcard-title">Anomaly Detection</div>
+            <div className="bcard-desc">Statistical and ML-based outlier identification</div>
+          </div>
+
+          <div className="bcard normal">
+            <div className="bcard-icon-wrap"><i className="ti ti-clock" aria-hidden="true" /></div>
+            <div className="bcard-title">Failure Prediction</div>
+            <div className="bcard-desc">Time-to-failure estimates with confidence intervals</div>
+          </div>
+
+          <div className="bcard normal">
+            <div className="bcard-icon-wrap"><i className="ti ti-bulb" aria-hidden="true" /></div>
+            <div className="bcard-title">Industrial Insights</div>
+            <div className="bcard-desc">Actionable intelligence for maintenance teams</div>
           </div>
         </div>
 
-        {/* ── NVIDIA Badge ── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 1.4 }}
-          className="mt-12 text-center"
-        >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full
-                       border border-primary-dark-teal/30 bg-primary-dark-teal/5"
-          >
-            <Cpu className="w-4 h-4 text-industrial-copper" />
-            <span className="text-sm font-mono text-soft-industrial-gray">Powered by NVIDIA SDK</span>
+        <div className="nvidia-row">
+          <div className="nvidia-badge">
+            <i className="ti ti-cpu" aria-hidden="true" />
+            <span>Powered by NVIDIA SDK</span>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </>
   );
 }

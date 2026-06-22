@@ -1,6 +1,5 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import SectionTitle from '../SectionTitle';
 
 function MiniChart() {
   return (
@@ -67,11 +66,17 @@ export default function CommandCenterPreview() {
   return (
     <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle
-          title="Command Center Preview"
-          subtitle="Real-time intelligence at your fingertips"
-          centered
-        />
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.cp-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.cp-section-tag::before,.cp-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.cp-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+.cp-sub{font-size:13px;color:rgba(175,205,218,0.45);text-align:center;max-width:360px;margin:0 auto 60px;line-height:1.65}
+        `}</style>
+
+        <div className="cp-section-tag">Platform Command Center</div>
+        <h2 className="cp-title">Command Center Preview</h2>
+        <p className="cp-sub">Real-time intelligence at your fingertips</p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
