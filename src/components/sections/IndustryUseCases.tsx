@@ -3,7 +3,7 @@ export default function IndustryUseCases() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.iu-root{background:#0b1820;padding:80px 48px 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.iu-root{background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
 .iu-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .iu-section-tag::before,.iu-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .iu-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
@@ -39,6 +39,7 @@ export default function IndustryUseCases() {
       <h2 className="sr-only">Industry use cases — predictive AI across six industrial sectors</h2>
 
       <div className="iu-root">
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
         <div className="iu-section-tag">Use Cases</div>
         <h2 className="iu-title">Industry Use Cases</h2>
         <p className="iu-sub">Proven intelligence across industrial sectors — from discrete manufacturing to grid-scale utilities</p>
@@ -124,6 +125,7 @@ export default function IndustryUseCases() {
               <span className="iu-stat-lbl">Uptime SLA</span>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>

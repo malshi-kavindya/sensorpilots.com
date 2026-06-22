@@ -3,7 +3,7 @@ export default function PlatformOverview() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.po-root{background:#0b1820;padding:80px 48px 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.po-root{background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
 .po-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .po-section-tag::before,.po-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .po-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
@@ -61,6 +61,7 @@ export default function PlatformOverview() {
       <h2 className="sr-only">Platform architecture and intelligence engine — six core AI capabilities from sensor to insight</h2>
 
       <div className="po-root">
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
         <div className="po-section-tag">Platform Architecture</div>
         <h2 className="po-title">Architecture &amp; Intelligence Engine</h2>
         <p className="po-sub">From raw sensor signals to predictive maintenance intelligence — six core AI capabilities in a unified pipeline</p>
@@ -129,7 +130,7 @@ export default function PlatformOverview() {
             <div className="bcard-desc">Real-time processing of multi-sensor streams at scale</div>
           </div>
 
-          <div className="bcard normal">
+          <div className="bcard wide">
             <div className="bcard-icon-wrap"><i className="ti ti-gauge" aria-hidden="true" /></div>
             <div className="bcard-title">Machine Health</div>
             <div className="bcard-desc">Continuous health scoring across all assets</div>
@@ -159,6 +160,7 @@ export default function PlatformOverview() {
             <i className="ti ti-cpu" aria-hidden="true" />
             <span>Powered by NVIDIA SDK</span>
           </div>
+        </div>
         </div>
       </div>
     </>

@@ -7,9 +7,11 @@ interface AnimatedCounterProps {
   prefix?: string;
   duration?: number;
   label: string;
+  valueClassName?: string;
+  labelClassName?: string;
 }
 
-export default function AnimatedCounter({ target, suffix = '', prefix = '', duration = 2000, label }: AnimatedCounterProps) {
+export default function AnimatedCounter({ target, suffix = '', prefix = '', duration = 2000, label, valueClassName, labelClassName }: AnimatedCounterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [count, setCount] = useState(0);
@@ -29,10 +31,10 @@ export default function AnimatedCounter({ target, suffix = '', prefix = '', dura
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-heading font-bold text-4xl md:text-5xl text-text-primary">
+      <div className={valueClassName ?? "font-heading font-bold text-4xl md:text-5xl text-text-primary"}>
         {prefix}{count}{suffix}
       </div>
-      <div className="text-soft-industrial-gray text-sm mt-2 font-medium">{label}</div>
+      <div className={labelClassName ?? "text-soft-industrial-gray text-sm mt-2 font-medium"}>{label}</div>
     </div>
   );
 }

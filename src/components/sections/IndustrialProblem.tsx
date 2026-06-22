@@ -3,7 +3,7 @@ export default function IndustrialProblem() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.ip-root{position:relative;background:#0b1820;padding:80px 48px 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.ip-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
 .ip-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .ip-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .ip-tag::before{content:'';display:block;width:28px;height:1px;background:rgba(232,112,64,0.35)}
@@ -54,6 +54,7 @@ export default function IndustrialProblem() {
       <h2 className="sr-only">The industrial problem — operations running blind without predictive AI</h2>
 
       <div className="ip-root">
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
         <div className="ip-content">
           <div>
             <div className="ip-tag">The Problem</div>
@@ -144,6 +145,7 @@ export default function IndustrialProblem() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
