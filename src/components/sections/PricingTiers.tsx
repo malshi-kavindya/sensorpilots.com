@@ -2,11 +2,13 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, X } from 'lucide-react';
+import PayPalModal from '../PayPalModal';
 
 export default function PricingTiers() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
+  const [selectedPlan, setSelectedPlan] = useState<{ name: string; price: number; billing: 'monthly' | 'annual'; features: string[] } | null>(null);
 
   const tiers = [
     {
@@ -116,14 +118,31 @@ export default function PricingTiers() {
                   </li>
                 ))}
               </ul>
-              <Link to="/#contact"
-                className={`block text-center py-3 rounded-lg font-semibold text-sm transition-all ${tier.highlighted ? 'bg-industrial-copper hover:bg-industrial-copper/80 text-text-primary' : 'bg-white/10 hover:bg-white/20 text-text-primary border border-white/10'}`}>
-                {tier.cta}
-              </Link>
+              {tier.priceMonthly ? (
+                <button onClick={() => setSelectedPlan({
+                  name: tier.name,
+                  price: billing === 'monthly' ? tier.priceMonthly! : tier.priceAnnual!,
+                  billing,
+                  features: tier.features.filter(f => f.included).map(f => f.text),
+                })}
+                  className={`block w-full text-center py-3 rounded-lg font-semibold text-sm transition-all cursor-pointer ${tier.highlighted ? 'bg-industrial-copper hover:bg-industrial-copper/80 text-text-primary' : 'bg-white/10 hover:bg-white/20 text-text-primary border border-white/10'}`}>
+                  {tier.cta}
+                </button>
+              ) : (
+                <Link to="/#contact"
+                  className={`block text-center py-3 rounded-lg font-semibold text-sm transition-all ${tier.highlighted ? 'bg-industrial-copper hover:bg-industrial-copper/80 text-text-primary' : 'bg-white/10 hover:bg-white/20 text-text-primary border border-white/10'}`}>
+                  {tier.cta}
+                </Link>
+              )}
             </motion.div>
           ))}
         </div>
       </div>
+
+      <PayPalModal
+        plan={selectedPlan}
+        onClose={() => setSelectedPlan(null)}
+      />
     </section>
   );
 }
