@@ -97,22 +97,21 @@ export default function PlatformSpecs() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.ps-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.ps-section-tag::before,.ps-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.ps-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:60px}
+        `}</style>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-20"
         >
-          <p className="text-[10px] uppercase tracking-[0.25em] text-primary-dark-teal font-semibold mb-3">
-            Platform Specifications
-          </p>
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-primary leading-tight">
-            Built for enterprise
-            <br />
-            <span className="text-primary-dark-teal">scale and precision.</span>
-          </h2>
+          <div className="ps-section-tag">Platform Specifications</div>
+          <h2 className="ps-title">Built for enterprise<br />scale and precision</h2>
         </motion.div>
 
         {/* Specs grid — joined panel */}

@@ -94,23 +94,23 @@ export default function PricingTiers() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.pt-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.pt-section-tag::before,.pt-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.pt-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+.pt-sub{font-size:13px;color:rgba(175,205,218,0.45);text-align:center;max-width:480px;margin:0 auto 48px;line-height:1.65}
+        `}</style>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-14"
         >
-          <p className="text-[10px] uppercase tracking-[0.25em] text-primary-dark-teal font-semibold mb-3">
-            Transparent Pricing
-          </p>
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-primary leading-tight mb-4">
-            Scale at your own pace.
-          </h2>
-          <p className="text-soft-industrial-gray text-sm max-w-md mx-auto">
-            From pilot deployments to global enterprise rollouts — a plan built for every stage of your industrial journey.
-          </p>
+          <div className="pt-section-tag">Transparent Pricing</div>
+          <h2 className="pt-title">Scale at your own pace</h2>
+          <p className="pt-sub">From pilot deployments to global enterprise rollouts — a plan built for every stage of your industrial journey.</p>
         </motion.div>
 
         {/* Billing toggle */}

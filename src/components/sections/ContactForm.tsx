@@ -121,22 +121,21 @@ export default function ContactForm() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.cf-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.cf-section-tag::before{content:'';display:block;width:28px;height:1px;background:rgba(232,112,64,0.35)}
+.cf-title{font-size:34px;font-weight:900;color:#edf2f5;line-height:1.1;letter-spacing:-0.02em;margin-bottom:48px}
+        `}</style>
 
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16"
         >
-          <p className="text-[10px] uppercase tracking-[0.25em] text-primary-dark-teal font-semibold mb-3">
-            Get in touch
-          </p>
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-primary leading-tight">
-            Let's build something
-            <br />
-            <span className="text-primary-dark-teal">remarkable together.</span>
-          </h2>
+          <div className="cf-section-tag">Get in touch</div>
+          <h2 className="cf-title">Let's build something<br />remarkable together.</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20 items-start">

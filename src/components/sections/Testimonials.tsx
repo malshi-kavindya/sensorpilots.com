@@ -57,22 +57,21 @@ export default function Testimonials() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.tt-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.tt-section-tag::before,.tt-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.tt-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:60px}
+        `}</style>
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
         >
-          <p className="text-[10px] uppercase tracking-[0.25em] text-primary-dark-teal font-semibold mb-3">
-            Social Proof
-          </p>
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-primary leading-tight">
-            Trusted by industrial
-            <br />
-            <span className="text-primary-dark-teal">leaders worldwide.</span>
-          </h2>
+          <div className="tt-section-tag">Social Proof</div>
+          <h2 className="tt-title">Trusted by industrial<br />leaders worldwide.</h2>
         </motion.div>
 
         {/* Cards */}

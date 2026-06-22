@@ -48,30 +48,30 @@ export default function BlogContent() {
 
       <div className="relative max-w-7xl mx-auto px-6">
 
+        <style>{`
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
+.bc-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
+.bc-section-tag::before,.bc-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
+.bc-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:48px}
+        `}</style>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-14"
         >
-          <p className="text-[10px] uppercase tracking-[0.25em] text-primary-dark-teal font-semibold mb-3">
-            Knowledge Base
-          </p>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-primary leading-tight">
-              Industrial intelligence,
-              <br />
-              <span className="text-primary-dark-teal">published weekly.</span>
-            </h2>
+          <div className="bc-section-tag">Knowledge Base</div>
+          <h2 className="bc-title">Industrial intelligence,<br />published weekly.</h2>
+        </motion.div>
 
-            {/* Search */}
-            <div className="relative w-full md:w-80 flex-shrink-0">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-industrial-gray" />
-              <input
-                type="text"
-                placeholder="Search articles…"
-                value={searchQuery}
+        {/* Search */}
+        <div className="relative w-full max-w-xs mx-auto mb-14">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-soft-industrial-gray" />
+          <input
+            type="text"
+            placeholder="Search articles…"
+            value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-11 pr-10 py-3 rounded-xl bg-white/[0.04] border border-white/[0.08] text-text-primary placeholder-soft-industrial-gray/50 text-sm focus:outline-none focus:border-primary-dark-teal/40 transition-colors"
               />
@@ -83,9 +83,7 @@ export default function BlogContent() {
                   <X className="w-4 h-4" />
                 </button>
               )}
-            </div>
-          </div>
-        </motion.div>
+        </div>
 
         {/* Category pills */}
         <motion.div
