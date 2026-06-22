@@ -121,7 +121,7 @@ export default function BlogContent() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="text-center py-24 border border-white/[0.06] rounded-2xl bg-white/[0.02]"
+              className="text-center py-24 rounded-xl border border-white/[0.07] bg-white/[0.025]"
             >
               <p className="text-soft-industrial-gray/60 text-sm">No articles found matching your search.</p>
               <button
@@ -140,7 +140,7 @@ export default function BlogContent() {
                   initial={{ opacity: 0, y: 24 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.15 }}
-                  className="group relative mb-px rounded-t-2xl border border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] transition-colors duration-300 overflow-hidden cursor-pointer"
+                  className="group relative mb-3 rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 overflow-hidden cursor-pointer"
                 >
                   {/* Top accent */}
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/60 to-transparent" />
@@ -187,14 +187,14 @@ export default function BlogContent() {
 
               {/* Rest of posts */}
               {rest.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05] rounded-b-2xl overflow-hidden border border-t-0 border-white/[0.06]">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {rest.map((post, i) => (
                     <motion.article
                       key={post.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ duration: 0.4, delay: 0.2 + i * 0.05 }}
-                      className="group relative flex flex-col bg-deep-machine-shadow/50 hover:bg-white/[0.04] transition-colors duration-300 cursor-pointer p-7 overflow-hidden"
+                      className="group relative flex flex-col rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 cursor-pointer p-7 overflow-hidden"
                     >
                       {/* Hover top line */}
                       <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-industrial-copper/0 to-transparent group-hover:via-industrial-copper/50 transition-all duration-500" />

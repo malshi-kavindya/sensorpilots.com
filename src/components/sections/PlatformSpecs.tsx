@@ -114,15 +114,15 @@ export default function PlatformSpecs() {
           <h2 className="ps-title">Built for enterprise<br />scale and precision</h2>
         </motion.div>
 
-        {/* Specs grid — joined panel */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.06]">
+        {/* Specs grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {specs.map((s, i) => (
             <motion.div
               key={s.label}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: i * 0.09 }}
-              className="group relative flex flex-col gap-5 p-8 md:p-10 bg-deep-machine-shadow/50 hover:bg-white/[0.04] transition-colors duration-300 overflow-hidden"
+              className="group relative flex flex-col gap-5 p-8 md:p-10 rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 overflow-hidden"
             >
               {/* Hover top accent */}
               <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent ${

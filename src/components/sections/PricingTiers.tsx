@@ -147,17 +147,15 @@ export default function PricingTiers() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {tiers.map((tier, i) => (
             <motion.div
               key={tier.name}
               initial={{ opacity: 0, y: 28 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className={`group relative flex flex-col p-8 md:p-10 transition-colors duration-300 ${
-                tier.highlighted
-                  ? 'bg-industrial-copper/[0.08] hover:bg-industrial-copper/[0.12]'
-                  : 'bg-deep-machine-shadow/60 hover:bg-white/[0.04]'
+              className={`group relative flex flex-col p-8 md:p-10 rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 overflow-hidden ${
+                tier.highlighted ? 'bg-[rgba(232,112,64,0.06)] border-[rgba(232,112,64,0.2)] hover:bg-[rgba(232,112,64,0.1)] hover:border-[rgba(232,112,64,0.4)]' : ''
               }`}
             >
               {/* Top accent */}

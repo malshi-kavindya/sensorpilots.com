@@ -75,14 +75,14 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden border border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group relative bg-deep-machine-shadow/60 hover:bg-white/[0.04] transition-colors duration-300 p-8 md:p-10 flex flex-col gap-8"
+              className="group relative rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 p-8 md:p-10 flex flex-col gap-8"
             >
               {/* Top accent line on hover */}
               <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover:via-primary-dark-teal/60 transition-all duration-500" />
