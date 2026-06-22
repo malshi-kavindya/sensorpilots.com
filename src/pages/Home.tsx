@@ -5,7 +5,6 @@ import IndustrialProblem from '../components/sections/IndustrialProblem';
 import SolutionSection from '../components/sections/SolutionSection';
 import CommandCenterPreview from '../components/sections/CommandCenterPreview';
 import HowItWorks from '../components/sections/HowItWorks';
-import IndustrialCapabilities from '../components/sections/IndustrialCapabilities';
 import IndustryUseCases from '../components/sections/IndustryUseCases';
 import ROIMetrics from '../components/sections/ROIMetrics';
 import Testimonials from '../components/sections/Testimonials';
@@ -33,7 +32,6 @@ export default function Home() {
       <SolutionSection />
       <CommandCenterPreview />
       <HowItWorks />
-      <IndustrialCapabilities />
       <IndustryUseCases />
       <ROIMetrics />
       <Testimonials />
@@ -42,22 +40,17 @@ export default function Home() {
       <FinalCTA />
       <div id="features">
         <FeatureGrid />
-    
         <PlatformSpecs />
       </div>
       <div id="resources">
-        
         <NewsletterCTA />
       </div>
       <div id="about">
         <StorySection />
-        <MissionVision />
-        
+        <MissionVision />  
       </div>
-      
       <div id="contact">
         <ContactForm />
-       
       </div>
     </div>
   );

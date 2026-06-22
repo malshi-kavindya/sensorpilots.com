@@ -7,11 +7,11 @@ export default function IndustrialProblem() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const problems = [
-    'Unexpected Downtime',
-    'Reactive Maintenance',
-    'Equipment Failure',
-    'High Operational Costs',
-    'Lost Production Time',
+    { label: 'Unexpected Downtime', gradient: 'hover:bg-gradient-to-r hover:from-[rgba(232,80,50,0.2)] hover:to-[rgba(232,80,50,0.05)]' },
+    { label: 'Reactive Maintenance', gradient: 'hover:bg-gradient-to-r hover:from-[rgba(220,160,40,0.2)] hover:to-[rgba(220,160,40,0.05)]' },
+    { label: 'Equipment Failure', gradient: 'hover:bg-gradient-to-r hover:from-[rgba(200,40,40,0.2)] hover:to-[rgba(200,40,40,0.05)]' },
+    { label: 'High Operational Costs', gradient: 'hover:bg-gradient-to-r hover:from-[rgba(160,60,180,0.15)] hover:to-[rgba(160,60,180,0.03)]' },
+    { label: 'Lost Production Time', gradient: 'hover:bg-gradient-to-r hover:from-[rgba(200,120,30,0.2)] hover:to-[rgba(200,120,30,0.05)]' },
   ];
 
   return (
@@ -32,14 +32,14 @@ export default function IndustrialProblem() {
             <div className="space-y-4">
               {problems.map((p, i) => (
                 <motion.div
-                  key={p}
+                  key={p.label}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 p-4 rounded-lg bg-white/5 border border-white/5"
+                  className={`flex items-center gap-3 p-4 rounded-lg bg-white/5 border border-white/5 transition-all duration-500 cursor-default ${p.gradient}`}
                 >
                   <AlertTriangle className="w-5 h-5 text-warm-signal-alert flex-shrink-0" />
-                  <span className="text-text-primary font-medium">{p}</span>
+                  <span className="text-text-primary font-medium">{p.label}</span>
                 </motion.div>
               ))}
             </div>

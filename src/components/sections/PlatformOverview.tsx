@@ -26,7 +26,7 @@ export default function PlatformOverview() {
         />
 
         <div className="relative mt-16">
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary-dark-teal via-industrial-copper to-warm-signal-alert rounded-full transform -translate-y-1/2" />
+          
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 relative z-10">
             {steps.map((step, i) => (
