@@ -1,13 +1,18 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Wifi, Zap, Database, Shield, Network, BarChart3 } from 'lucide-react';
+import sensorIngestionIcon from '../../assets/icons/Sensor Ingestion Engine.png';
+import aiModelsIcon from '../../assets/icons/AI Models.png';
+import dataPipelineIcon from '../../assets/icons/Data Pipeline.png';
+import machineHealthIcon from '../../assets/icons/Machine Health.png';
+import industrialIntegrationsIcon from '../../assets/icons/Industrial Integrations.png';
+import industrialInsightsIcon from '../../assets/icons/Industrial Insights.png';
 
 const specs = [
   {
     label: 'Sensor Ingestion',
     value: '2M+',
     unit: '/ second',
-    icon: Wifi,
+    icon: sensorIngestionIcon,
     desc: 'Real-time data ingestion across all connected endpoints',
     accent: 'teal',
   },
@@ -15,7 +20,7 @@ const specs = [
     label: 'AI Inference Latency',
     value: '<50',
     unit: 'ms',
-    icon: Zap,
+    icon: aiModelsIcon,
     desc: 'Edge-to-cloud anomaly detection with sub-50ms response',
     accent: 'copper',
   },
@@ -23,7 +28,7 @@ const specs = [
     label: 'Data Retention',
     value: '∞',
     unit: 'unlimited',
-    icon: Database,
+    icon: dataPipelineIcon,
     desc: 'No caps on historical sensor data — ever',
     accent: 'teal',
   },
@@ -31,7 +36,7 @@ const specs = [
     label: 'Uptime SLA',
     value: '99.99',
     unit: '%',
-    icon: Shield,
+    icon: machineHealthIcon,
     desc: 'Enterprise-grade availability backed by contractual SLA',
     accent: 'copper',
   },
@@ -39,7 +44,7 @@ const specs = [
     label: 'Supported Protocols',
     value: '12',
     unit: '+ protocols',
-    icon: Network,
+    icon: industrialIntegrationsIcon,
     desc: 'OPC-UA, MQTT, Modbus, and 9 more out of the box',
     accent: 'teal',
   },
@@ -47,7 +52,7 @@ const specs = [
     label: 'Dashboard Widgets',
     value: '30',
     unit: '+ widgets',
-    icon: BarChart3,
+    icon: industrialInsightsIcon,
     desc: 'Composable, drag-and-drop reporting components',
     accent: 'copper',
   },
@@ -140,7 +145,7 @@ export default function PlatformSpecs() {
                   ? 'bg-primary-dark-teal/10 border-primary-dark-teal/20 group-hover:border-primary-dark-teal/50 group-hover:bg-primary-dark-teal/20'
                   : 'bg-industrial-copper/10 border-industrial-copper/20 group-hover:border-industrial-copper/50 group-hover:bg-industrial-copper/20'
               }`}>
-                <s.icon className={`w-5 h-5 ${s.accent === 'teal' ? 'text-primary-dark-teal' : 'text-industrial-copper'}`} />
+                <img src={s.icon} alt={s.label} className="w-5 h-5 object-contain" />
               </div>
 
               {/* Value */}

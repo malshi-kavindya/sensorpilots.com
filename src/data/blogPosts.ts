@@ -7,6 +7,7 @@ export const blogPosts = [
     category: 'Industrial AI',
     date: '2026-01-15',
     readTime: '8 min read',
+    image: 'Industrial AI Trends_ Predictive Maintenance in 2026.png',
   },
   {
     id: '2',
@@ -16,6 +17,7 @@ export const blogPosts = [
     category: 'Architecture',
     date: '2026-01-08',
     readTime: '12 min read',
+    image: 'Building Resilient Sensor Networks for Smart Factories.png',
   },
   {
     id: '3',
@@ -25,6 +27,7 @@ export const blogPosts = [
     category: 'Strategy',
     date: '2025-12-28',
     readTime: '10 min read',
+    image: 'Predictive Maintenance Strategies That Cut Downtime by 40%.png',
   },
   {
     id: '4',
@@ -34,6 +37,7 @@ export const blogPosts = [
     category: 'Analytics',
     date: '2025-12-20',
     readTime: '15 min read',
+    image: 'Sensor Analytics Best Practices for Heavy Industry.png',
   },
   {
     id: '5',
@@ -43,6 +47,7 @@ export const blogPosts = [
     category: 'AI Research',
     date: '2025-12-12',
     readTime: '7 min read',
+    image: 'The Future of Machine Health Monitoring with AI Prompt.png',
   },
   {
     id: '6',
@@ -52,6 +57,7 @@ export const blogPosts = [
     category: 'Integration',
     date: '2025-12-05',
     readTime: '11 min read',
+    image: 'ntegrating SCADA with Modern Cloud Analytics Platforms.png',
   },
   {
     id: '7',
@@ -61,6 +67,7 @@ export const blogPosts = [
     category: 'Technology',
     date: '2025-11-28',
     readTime: '9 min read',
+    image: 'NVIDIA SDK for Industrial Edge Computing.png',
   },
   {
     id: '8',
@@ -70,6 +77,7 @@ export const blogPosts = [
     category: 'Operations',
     date: '2025-11-20',
     readTime: '8 min read',
+    image: 'Root Cause Detection_ From Alert to Resolution.png',
   },
   {
     id: '9',
@@ -79,6 +87,7 @@ export const blogPosts = [
     category: 'Energy',
     date: '2025-11-15',
     readTime: '10 min read',
+    image: 'Energy Sector Digital Transformation with Sensor AI.png',
   },
   {
     id: '10',
@@ -88,6 +97,7 @@ export const blogPosts = [
     category: 'Automotive',
     date: '2025-11-08',
     readTime: '12 min read',
+    image: 'Automotive Production Line Intelligence.png',
   },
   {
     id: '11',
@@ -97,6 +107,7 @@ export const blogPosts = [
     category: 'Engineering',
     date: '2025-11-01',
     readTime: '14 min read',
+    image: 'Anomaly Detection at Scale_ Lessons from 100K Sensors.png',
   },
   {
     id: '12',
@@ -106,5 +117,6 @@ export const blogPosts = [
     category: 'Research',
     date: '2025-10-25',
     readTime: '16 min read',
+    image: 'The Economics of Predictive Maintenance_ A 2026 Report.png',
   },
 ];

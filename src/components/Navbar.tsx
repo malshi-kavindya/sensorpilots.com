@@ -47,8 +47,8 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-9 py-4 flex items-center justify-between">
-        <Link to="/" className="font-mono text-[12px] text-white/35 tracking-[0.1em] no-underline hover:text-white/55 transition-colors">
-          SYNTHOS
+        <Link to="/" className="no-underline">
+          <img src="/Logo.svg" alt="Logo" className="h-7 md:h-8 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-[22px] font-heading">

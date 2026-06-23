@@ -1,6 +1,9 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import SectionTitle from '../SectionTitle';
+import w1 from '../../assets/icons/w1.png';
+import m1 from '../../assets/icons/m1.png';
+import w2 from '../../assets/icons/w2.png';
 
 const testimonials = [
   {
@@ -10,6 +13,7 @@ const testimonials = [
     company: 'Meridian Manufacturing',
     stat: '42%',
     statLabel: 'downtime reduction',
+    avatar: w1,
   },
   {
     quote: "The sensor analytics platform gave us visibility into our turbine health we never had before. Real game changer for our maintenance program.",
@@ -18,6 +22,7 @@ const testimonials = [
     company: 'Apex Energy',
     stat: '12×',
     statLabel: 'faster anomaly detection',
+    avatar: m1,
   },
   {
     quote: "Deploying SensorPilots across 12 plants was seamless. The AI engine started detecting anomalies within days of sensor connection.",
@@ -26,6 +31,7 @@ const testimonials = [
     company: 'Titan Automotive',
     stat: '12',
     statLabel: 'plants deployed',
+    avatar: w2,
   },
 ];
 
@@ -109,11 +115,7 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full bg-primary-dark-teal/20 border border-primary-dark-teal/30 flex items-center justify-center flex-shrink-0 group-hover:border-primary-dark-teal/60 transition-colors duration-300">
-                  <span className="font-heading font-bold text-primary-dark-teal text-xs">
-                    {t.author.split(' ').map((n) => n[0]).join('')}
-                  </span>
-                </div>
+                <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
                 <div>
                   <p className="text-sm font-semibold text-text-primary leading-tight">{t.author}</p>
                   <p className="text-[11px] text-soft-industrial-gray mt-0.5">{t.role}</p>

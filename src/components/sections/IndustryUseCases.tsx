@@ -1,3 +1,10 @@
+import manufacturingIcon from '../../assets/icons/Manufacturing.png';
+import automotiveIcon from '../../assets/icons/Automotive.png';
+import energyIcon from '../../assets/icons/Energy.png';
+import heavyIndustryIcon from '../../assets/icons/Heavy Industry.png';
+import utilitiesIcon from '../../assets/icons/Utilities.png';
+import smartFactoryIcon from '../../assets/icons/Smart Factory.png';
+
 export default function IndustryUseCases() {
   return (
     <>
@@ -13,7 +20,7 @@ export default function IndustryUseCases() {
 .iu-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .iu-section-tag::before,.iu-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .iu-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
-.iu-sub{font-size:13px;color:rgba(175,205,218,0.45);text-align:center;max-width:400px;margin:0 auto 56px;line-height:1.65}
+.iu-sub{font-size:13px;color:rgba(6, 9, 10, 0.45);text-align:center;max-width:400px;margin:0 auto 56px;line-height:1.65}
 .iu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .iu-card{position:relative;border:0.5px solid rgba(255,255,255,0.07);border-radius:12px;padding:28px 24px;background:rgba(255,255,255,0.025);overflow:hidden;transition:border-color 0.22s,background 0.22s;cursor:default}
 .iu-card:hover{border-color:rgba(16,76,100,0.45);background:rgba(16,76,100,0.07)}
@@ -25,6 +32,8 @@ export default function IndustryUseCases() {
 .iu-card:hover .iu-icon-wrap{border-color:rgba(232,112,64,0.45);background:rgba(232,112,64,0.1)}
 .iu-icon-wrap i{font-size:17px;color:rgba(16,76,100,0.9);transition:color 0.22s}
 .iu-card:hover .iu-icon-wrap i{color:#e87040}
+.iu-icon-wrap img{opacity:0.8;transition:opacity 0.22s}
+.iu-card:hover .iu-icon-wrap img{opacity:1}
 .iu-card-sector{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(232,112,64,0.45);margin-bottom:7px;transition:color 0.22s}
 .iu-card:hover .iu-card-sector{color:rgba(232,112,64,0.7)}
 .iu-card-title{font-size:15px;font-weight:700;color:#edf2f5;margin-bottom:8px;line-height:1.25}
@@ -64,7 +73,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">01</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-building-factory-2" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={manufacturingIcon} alt="Manufacturing" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Manufacturing</div>
             <div className="iu-card-title">Manufacturing Plants</div>
             <div className="iu-card-desc">Predictive maintenance across assembly lines, CNC machines, and robotics — zero unplanned downtime.</div>
@@ -74,7 +83,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">02</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-car" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={automotiveIcon} alt="Automotive" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Automotive</div>
             <div className="iu-card-title">Automotive Production</div>
             <div className="iu-card-desc">Real-time quality monitoring on stamping, welding, and painting operations at line speed.</div>
@@ -84,7 +93,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">03</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-flame" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={energyIcon} alt="Energy" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Energy</div>
             <div className="iu-card-title">Energy Facilities</div>
             <div className="iu-card-desc">Turbine and generator health monitoring for reliable power generation at any scale.</div>
@@ -94,7 +103,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">04</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-tool" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={heavyIndustryIcon} alt="Heavy Industry" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Heavy Industry</div>
             <div className="iu-card-title">Industrial Equipment</div>
             <div className="iu-card-desc">Heavy machinery and construction equipment failure prediction before it stops a site.</div>
@@ -104,7 +113,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">05</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-bolt" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={utilitiesIcon} alt="Utilities" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Utilities</div>
             <div className="iu-card-title">Utilities</div>
             <div className="iu-card-desc">Grid infrastructure and transformer monitoring at scale across distributed networks.</div>
@@ -114,7 +123,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">06</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><i className="ti ti-cpu" aria-hidden="true" /></div>
+            <div className="iu-icon-wrap"><img src={smartFactoryIcon} alt="Smart Factory" className="w-[18px] h-[18px] object-contain" /></div>
             <div className="iu-card-sector">Industry 4.0</div>
             <div className="iu-card-title">Smart Factories</div>
             <div className="iu-card-desc">End-to-end Industry 4.0 intelligence and automation — from edge sensor to enterprise dashboard.</div>

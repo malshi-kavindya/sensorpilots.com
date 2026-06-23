@@ -1,106 +1,30 @@
-import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight } from 'lucide-react';
-
-function MosaicCanvas() {
-  const ref = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const cv = ref.current;
-    if (!cv) return;
-    const cx = cv.getContext('2d');
-    if (!cx) return;
-
-    const root = cv.parentElement!;
-
-    const draw = () => {
-      const W = root.offsetWidth;
-      const H = root.offsetHeight;
-      cv.width = W;
-      cv.height = H;
-      cx.fillStyle = '#0b1820';
-      cx.fillRect(0, 0, W, H);
-
-      const tw = 54, th = 54;
-      const cols = Math.ceil(W / tw) + 1, rows = Math.ceil(H / th) + 1;
-      const cx2 = W * 0.54, cy2 = H * 0.44;
-
-      const rnd = (s: number) => ((s * 1664525 + 1013904223) & 0x7fffffff) / 0x7fffffff;
-      const rnd2 = (s: number) => ((s * 22695477 + 1) & 0x7fffffff) / 0x7fffffff;
-
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const x = c * tw, y = r * th;
-          const pcx = x + tw / 2, pcy = y + th / 2;
-          const dist = Math.sqrt((pcx - cx2) ** 2 + (pcy - cy2) ** 2);
-          const maxD = Math.sqrt(cx2 ** 2 + cy2 ** 2);
-          const norm = Math.min(dist / maxD, 1);
-          const s1 = (r * 997 + c) * 6151;
-          const r1 = rnd(s1), r2 = rnd2(s1);
-          const thresh = norm < 0.2 ? 0 : norm < 0.5 ? ((norm - 0.2) / 0.3) * 0.3 : 0.3 + ((norm - 0.5) / 0.5) * 0.65;
-
-          if (r1 < thresh) {
-            const br = 0.1 + r2 * 0.55 + norm * 0.3;
-            let col = '', alpha = 0;
-
-            if (r2 > 0.72) {
-              const rv = Math.floor(65 + br * 160), gv = Math.floor(28 + br * 52), bv = Math.floor(10 + br * 22);
-              col = `rgb(${rv},${gv},${bv})`;
-              alpha = Math.min(0.55 + br * 0.38, 0.9);
-            } else if (r2 > 0.42) {
-              const rv = Math.floor(10 + br * 28), gv = Math.floor(48 + br * 72), bv = Math.floor(60 + br * 95);
-              col = `rgb(${rv},${gv},${bv})`;
-              alpha = Math.min(0.45 + br * 0.42, 0.88);
-            } else {
-              const lv = Math.floor(12 + br * 28);
-              col = `rgb(${lv},${lv + 3},${lv + 5})`;
-              alpha = Math.min(0.38 + br * 0.45, 0.82);
-            }
-
-            if (norm < 0.22) alpha *= (norm / 0.22);
-            cx.globalAlpha = alpha;
-            cx.fillStyle = col;
-            cx.fillRect(x + 1.5, y + 1.5, tw - 3, th - 3);
-          }
-        }
-      }
-
-      cx.globalAlpha = 1;
-      const maxD2 = (w: number, h: number, ox: number, oy: number) =>
-        Math.sqrt(Math.max(ox, w - ox) ** 2 + Math.max(oy, h - oy) ** 2);
-      const g1 = cx.createRadialGradient(cx2, cy2, 0, cx2, cy2, maxD2(W, H, cx2, cy2));
-      g1.addColorStop(0, 'rgba(8,14,20,0)');
-      g1.addColorStop(0.3, 'rgba(8,14,20,0.08)');
-      g1.addColorStop(0.65, 'rgba(6,11,16,0.55)');
-      g1.addColorStop(1, 'rgba(5,9,14,0.9)');
-      cx.fillStyle = g1;
-      cx.fillRect(0, 0, W, H);
-    };
-
-    draw();
-    const onResize = () => draw();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  return <canvas ref={ref} className="absolute inset-0 z-0" />;
-}
+import heroBg from '../../assets/icons/Hero.png';
 
 export default function HeroSection() {
   return (
     <section className="relative w-full min-h-[620px] bg-[#0b1820] overflow-hidden rounded-[14px] pt-32">
-      <MosaicCanvas />
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 z-0"
         style={{
           background: 'radial-gradient(ellipse 60% 70% at 55% 45%, rgba(10,50,68,0) 0%, rgba(7,13,18,0.5) 65%, rgba(5,10,14,0.92) 100%)',
         }}
       />
       <div
-        className="absolute inset-0 z-[11]"
+        className="absolute inset-0 z-[1]"
         style={{
           background: 'linear-gradient(to right, rgba(5,10,14,0.94) 0%, rgba(5,10,14,0.6) 35%, rgba(5,10,14,0) 60%)',
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[2]"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
       />
 

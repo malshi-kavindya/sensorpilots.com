@@ -107,13 +107,8 @@ export default function Footer() {
           {/* Brand col */}
           <div className="lg:col-span-3 flex flex-col gap-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 w-fit">
-              <div className="w-9 h-9 rounded-lg bg-primary-dark-teal flex items-center justify-center border border-primary-dark-teal/50">
-                <span className="font-mono font-black text-text-primary text-sm tracking-tight">SP</span>
-              </div>
-              <span className="font-heading font-bold text-lg text-text-primary tracking-tight">
-                SensorPilots
-              </span>
+            <Link to="/" className="flex items-center w-fit">
+              <img src="/Logo.svg" alt="Logo" className="h-7 md:h-8 w-auto" />
             </Link>
 
             {/* Tagline */}
