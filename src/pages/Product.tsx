@@ -1,496 +1,387 @@
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {
-  ChevronRight, ArrowRight, Cpu, Brain, Database, Shield,
-  Server, Cloud, Lock, Terminal, BarChart3, Zap, HardDrive,
-  CheckCircle2, GitBranch, Network, Wifi, AlertTriangle, Clock, Gauge,
-  Box, Fingerprint, Key, FileCheck, Check, Monitor, Settings
-} from 'lucide-react';
-import SectionTitle from '../components/SectionTitle';
+import { Cpu, Activity, TrendingUp, ShieldAlert, Layers, Terminal } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
-/* ────────────────────────────────────────────────
-   PRODUCT HERO
-   ──────────────────────────────────────────────── */
-function ProductHero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
+function SectionWrapper({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) {
   return (
-    <section ref={ref} className="relative pt-32 pb-24 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 opacity-10" style={{
-          backgroundImage: `linear-gradient(rgba(16, 76, 100, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 76, 100, 0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
+    <section id={id} className={`relative py-24 md:py-32 overflow-hidden ${className}`}>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.025]" style={{
+          backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)',
+          backgroundSize: '80px 80px',
         }} />
-        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary-dark-teal/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-industrial-copper/10 rounded-full blur-3xl" />
       </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-dark-teal/40 bg-primary-dark-teal/10 mb-8">
-            <Cpu className="w-4 h-4 text-industrial-copper" />
-            <span className="text-sm font-mono text-soft-industrial-gray">Technical Product Overview</span>
-          </div>
-
-          <h1 className="font-heading font-bold text-4xl md:text-6xl text-text-primary leading-tight mb-6">
-            SensorPilots
-            <br />
-            <span className="text-gradient-teal">Data Intelligence Engine</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-soft-industrial-gray max-w-2xl mx-auto mb-10 leading-relaxed">
-            A complete industrial AI platform for predictive maintenance, sensor analytics, and machine health monitoring — built for engineers, by engineers.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="group flex items-center gap-2 px-8 py-4 bg-primary-dark-teal hover:bg-primary-dark-teal/80 text-text-primary font-semibold rounded-lg transition-all duration-300 text-lg">
-              Book Demo
-              <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link to="/features" className="group flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-white/40 text-text-primary font-semibold rounded-lg transition-all duration-300 text-lg">
-              Explore Features
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </motion.div>
-      </div>
+      {children}
     </section>
   );
 }
 
-/* ────────────────────────────────────────────────
-   PREDICTIVE MAINTENANCE SYSTEM
-   ──────────────────────────────────────────────── */
-function PredictiveMaintenanceSystem() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const features = [
-    { icon: Brain, label: 'Deep Learning Models', desc: 'LSTM, Transformer, and hybrid architectures trained on failure signatures' },
-    { icon: Clock, label: 'Time-to-Failure', desc: 'Probabilistic estimates with confidence intervals and degradation curves' },
-    { icon: AlertTriangle, label: 'Anomaly Detection', desc: 'Statistical, isolation forest, and autoencoder-based outlier detection' },
-    { icon: Gauge, label: 'Health Scoring', desc: 'Dynamic asset health scores from 0-100 with trend visualization' },
-  ];
-
+function AnimateIn({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
   return (
-    <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
-            <span className="text-industrial-copper font-mono text-sm uppercase tracking-wider mb-4 block">Core System</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text-primary mb-6 leading-tight">
-              Predictive Maintenance System
-            </h2>
-            <p className="text-soft-industrial-gray leading-relaxed mb-8">
-              Our AI engine continuously learns from sensor streams to predict equipment failures before they occur. Models are retrained weekly with new failure data to maintain accuracy.
-            </p>
-            <div className="space-y-4">
-              {features.map((f, i) => (
-                <motion.div key={f.label} initial={{ opacity: 0, x: -20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: i * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/5">
-                  <div className="w-10 h-10 rounded-lg bg-primary-dark-teal/20 flex items-center justify-center flex-shrink-0">
-                    <f.icon className="w-5 h-5 text-primary-dark-teal" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-text-primary text-sm mb-1">{f.label}</h4>
-                    <p className="text-xs text-soft-industrial-gray">{f.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
-            <div className="rounded-2xl border border-white/10 bg-background/80 p-6">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-warm-signal-alert" />
-                <div className="w-3 h-3 rounded-full bg-industrial-copper" />
-                <div className="w-3 h-3 rounded-full bg-primary-dark-teal" />
-                <span className="ml-2 font-mono text-xs text-soft-industrial-gray">Predictive Model — Motor Assembly</span>
-              </div>
-              <div className="space-y-4">
-                <div className="p-4 rounded-lg bg-white/5 border border-white/5">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-mono text-soft-industrial-gray">DEGRADATION CURVE</span>
-                    <span className="text-xs font-mono text-warm-signal-alert">RUL: 14 days</span>
-                  </div>
-                  <div className="h-24 flex items-end gap-1">
-                    {Array.from({ length: 28 }).map((_, i) => {
-                      const val = Math.min(100, 100 - (i / 28) * 60 + (Math.random() - 0.5) * 8);
-                      return (
-                        <div key={i} className="flex-1 rounded-t-sm" style={{
-                          height: `${val}%`,
-                          backgroundColor: i > 20 ? '#D59080' : i > 14 ? '#C0754D' : '#104C64',
-                          opacity: 0.7 + (i / 28) * 0.3,
-                        }} />
-                      );
-                    })}
-                  </div>
-                  <div className="flex justify-between mt-2 text-xs text-soft-industrial-gray font-mono">
-                    <span>Day 0</span>
-                    <span>Day 14</span>
-                    <span>Day 28</span>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
-                    <div className="font-heading font-bold text-xl text-primary-dark-teal">96.2%</div>
-                    <div className="text-xs text-soft-industrial-gray mt-1">Accuracy</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
-                    <div className="font-heading font-bold text-xl text-industrial-copper">14d</div>
-                    <div className="text-xs text-soft-industrial-gray mt-1">Lead Time</div>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/5 text-center">
-                    <div className="font-heading font-bold text-xl text-warm-signal-alert">0.3%</div>
-                    <div className="text-xs text-soft-industrial-gray mt-1">False Pos.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   MACHINE HEALTH MONITORING
-   ──────────────────────────────────────────────── */
-function MachineHealthMonitoring() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const metrics = [
-    { label: 'Vibration RMS', value: '4.2 mm/s', status: 'normal', color: 'text-primary-dark-teal' },
-    { label: 'Bearing Temp', value: '68°C', status: 'warning', color: 'text-industrial-copper' },
-    { label: 'Oil Pressure', value: '3.8 bar', status: 'normal', color: 'text-primary-dark-teal' },
-    { label: 'Motor Current', value: '12.4 A', status: 'alert', color: 'text-warm-signal-alert' },
-  ];
-
-  return (
-    <section ref={ref} className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }} className="order-2 lg:order-1">
-            <div className="rounded-2xl border border-white/10 bg-background/80 p-6">
-              <div className="flex items-center gap-2 mb-6">
-                <Monitor className="w-4 h-4 text-primary-dark-teal" />
-                <span className="font-mono text-xs text-soft-industrial-gray">Machine Health — Turbine Unit A</span>
-              </div>
-              <div className="space-y-3">
-                {metrics.map((m, i) => (
-                  <div key={i} className="flex items-center justify-between p-4 rounded-lg bg-white/5 border border-white/5">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-2 h-2 rounded-full ${m.status === 'normal' ? 'bg-primary-dark-teal' : m.status === 'warning' ? 'bg-industrial-copper' : 'bg-warm-signal-alert'} ${m.status === 'alert' ? 'animate-pulse' : ''}`} />
-                      <span className="text-sm text-text-primary">{m.label}</span>
-                    </div>
-                    <span className={`font-heading font-bold ${m.color}`}>{m.value}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 p-4 rounded-lg bg-white/5 border border-primary-dark-teal/30">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-text-primary font-medium">Overall Health Score</span>
-                  <span className="font-heading font-bold text-xl text-primary-dark-teal">82.4</span>
-                </div>
-                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-[82.4%] bg-gradient-to-r from-primary-dark-teal via-industrial-copper to-warm-signal-alert rounded-full" />
-                </div>
-              </div>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }} className="order-1 lg:order-2">
-            <span className="text-industrial-copper font-mono text-sm uppercase tracking-wider mb-4 block">Monitoring</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text-primary mb-6 leading-tight">
-              Machine Health Monitoring
-            </h2>
-            <p className="text-soft-industrial-gray leading-relaxed mb-8">
-              Real-time health scoring across all critical machine parameters. Each asset receives a composite health score based on vibration, temperature, pressure, and electrical signatures.
-            </p>
-            <div className="space-y-3">
-              {['Real-time parameter tracking', 'Trend analysis and forecasting', 'Threshold-based alerting', 'Historical baseline comparison'].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-text-primary">
-                  <CheckCircle2 className="w-5 h-5 text-primary-dark-teal flex-shrink-0" />
-                  <span className="text-sm">{item}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   INDUSTRIAL ANALYTICS LAYER
-   ──────────────────────────────────────────────── */
-function IndustrialAnalyticsLayer() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const analytics = [
-    { icon: BarChart3, label: 'Descriptive Analytics', desc: 'Historical performance summaries and trend reports' },
-    { icon: Brain, label: 'Diagnostic Analytics', desc: 'Root cause analysis and failure chain attribution' },
-    { icon: Zap, label: 'Predictive Analytics', desc: 'Failure forecasting and remaining useful life estimates' },
-    { icon: Settings, label: 'Prescriptive Analytics', desc: 'Optimal maintenance scheduling and resource allocation' },
-  ];
-
-  return (
-    <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle title="Industrial Analytics Layer" subtitle="Four layers of analytical depth from data to action" centered />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {analytics.map((a, i) => (
-            <motion.div key={a.label} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }}
-              className="p-6 rounded-xl bg-white/5 border border-white/5 hover:border-primary-dark-teal/40 transition-all">
-              <div className="w-12 h-12 rounded-lg bg-primary-dark-teal/20 border border-primary-dark-teal/30 flex items-center justify-center mb-4">
-                <a.icon className="w-6 h-6 text-primary-dark-teal" />
-              </div>
-              <h3 className="font-heading font-semibold text-lg text-text-primary mb-2">{a.label}</h3>
-              <p className="text-sm text-soft-industrial-gray leading-relaxed">{a.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   TECHNICAL ARCHITECTURE
-   ──────────────────────────────────────────────── */
-function TechnicalArchitecture() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const layers = [
-    { name: 'Ingestion Layer', icon: Wifi, items: ['MQTT', 'OPC-UA', 'Modbus', 'REST APIs', 'Kafka Streams'] },
-    { name: 'Processing Layer', icon: Database, items: ['Stream Processing', 'Feature Engineering', 'Signal Filtering', 'Edge Inference', 'Batch Jobs'] },
-    { name: 'AI Engine', icon: Brain, items: ['LSTM Networks', 'Isolation Forest', 'Autoencoders', 'Gradient Boosting', 'Transformer Models'] },
-    { name: 'Serving Layer', icon: Server, items: ['REST API', 'GraphQL', 'WebSocket', 'SDK', 'CLI'] },
-    { name: 'Visualization', icon: Monitor, items: ['Dashboards', 'Alerts', 'Reports', 'Mobile App', 'Embedded'] },
-  ];
-
-  return (
-    <section ref={ref} className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle title="Technical Architecture" subtitle="Cloud-native, scalable, and enterprise-ready" centered />
-
-        <div className="space-y-4">
-          {layers.map((layer, i) => (
-            <motion.div key={layer.name} initial={{ opacity: 0, x: -30 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: i * 0.1 }}
-              className="p-5 rounded-xl border border-white/5 bg-white/5 hover:border-white/10 transition-colors">
-              <div className="flex flex-col md:flex-row md:items-center gap-4">
-                <div className="flex items-center gap-3 md:w-48 flex-shrink-0">
-                  <div className="w-10 h-10 rounded-lg bg-primary-dark-teal/20 flex items-center justify-center">
-                    <layer.icon className="w-5 h-5 text-primary-dark-teal" />
-                  </div>
-                  <h4 className="font-heading font-semibold text-text-primary">{layer.name}</h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {layer.items.map((item) => (
-                    <span key={item} className="px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs font-mono text-soft-industrial-gray">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   DEPLOYMENT OPTIONS
-   ──────────────────────────────────────────────── */
-function DeploymentOptions() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const options = [
-    { name: 'Cloud SaaS', icon: Cloud, desc: 'Fully managed on SensorPilots cloud. Zero infrastructure overhead.', features: ['Auto-scaling', '99.99% uptime SLA', 'Global CDN', 'Managed backups'] },
-    { name: 'Hybrid Cloud', icon: GitBranch, desc: 'Edge inference on-premise, cloud analytics and dashboard.', features: ['Edge AI nodes', 'Local data caching', 'Cloud sync', 'Air-gapped mode'] },
-    { name: 'On-Premise', icon: HardDrive, desc: 'Complete self-hosted deployment for regulated environments.', features: ['Kubernetes-native', 'Private registry', 'Offline capable', 'Custom certificates'] },
-  ];
-
-  return (
-    <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle title="Deployment Options" subtitle="Choose the deployment model that fits your infrastructure" centered />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {options.map((opt, i) => (
-            <motion.div key={opt.name} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.15 }}
-              className="p-6 rounded-xl border border-white/5 bg-white/5 hover:border-white/10 transition-all">
-              <div className="w-12 h-12 rounded-lg bg-primary-dark-teal/20 flex items-center justify-center mb-4">
-                <opt.icon className="w-6 h-6 text-primary-dark-teal" />
-              </div>
-              <h3 className="font-heading font-semibold text-xl text-text-primary mb-2">{opt.name}</h3>
-              <p className="text-sm text-soft-industrial-gray mb-6">{opt.desc}</p>
-              <ul className="space-y-2">
-                {opt.features.map((f) => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-soft-industrial-gray">
-                    <Check className="w-4 h-4 text-primary-dark-teal" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   API INTEGRATIONS
-   ──────────────────────────────────────────────── */
-function APIIntegrations() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const integrations = [
-    { name: 'REST API', desc: 'Full-featured REST API with OpenAPI 3.0 spec', icon: Terminal },
-    { name: 'GraphQL', desc: 'Flexible queries for complex data relationships', icon: GitBranch },
-    { name: 'WebSocket', desc: 'Real-time streaming for live dashboards', icon: Zap },
-    { name: 'Webhooks', desc: 'Event-driven notifications to external systems', icon: Network },
-    { name: 'SDK', desc: 'Python, JavaScript, and Go SDKs', icon: Box },
-    { name: 'CLI', desc: 'Command-line interface for DevOps workflows', icon: Terminal },
-  ];
-
-  return (
-    <section ref={ref} className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle title="API & Integrations" subtitle="Connect SensorPilots to your existing industrial stack" centered />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {integrations.map((int, i) => (
-            <motion.div key={int.name} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl border border-white/5 bg-white/5 hover:border-primary-dark-teal/40 transition-all">
-              <div className="w-10 h-10 rounded-lg bg-primary-dark-teal/20 flex items-center justify-center mb-3">
-                <int.icon className="w-5 h-5 text-primary-dark-teal" />
-              </div>
-              <h4 className="font-heading font-semibold text-text-primary mb-1">{int.name}</h4>
-              <p className="text-xs text-soft-industrial-gray">{int.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   SECURITY & COMPLIANCE
-   ──────────────────────────────────────────────── */
-function SecurityCompliance() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const items = [
-    { icon: Shield, label: 'SOC 2 Type II', desc: 'Certified security controls and audit trail' },
-    { icon: Lock, label: 'End-to-End Encryption', desc: 'TLS 1.3 in transit, AES-256 at rest' },
-    { icon: Fingerprint, label: 'RBAC & SSO', desc: 'Role-based access control with SAML/OIDC' },
-    { icon: Key, label: 'API Key Management', desc: 'Scoped tokens with rotation and revocation' },
-    { icon: FileCheck, label: 'ISO 27001', desc: 'Information security management certified' },
-    { icon: Check, label: 'GDPR Compliant', desc: 'Data residency, right-to-erasure, and DPA' },
-  ];
-
-  return (
-    <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
-      <div className="max-w-7xl mx-auto px-6">
-        <SectionTitle title="Security & Compliance" subtitle="Enterprise-grade security for mission-critical data" centered />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {items.map((item, i) => (
-            <motion.div key={item.label} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.08 }}
-              className="p-5 rounded-xl border border-white/5 bg-white/5 hover:border-white/10 transition-all">
-              <div className="w-10 h-10 rounded-lg bg-primary-dark-teal/20 flex items-center justify-center mb-3">
-                <item.icon className="w-5 h-5 text-primary-dark-teal" />
-              </div>
-              <h4 className="font-heading font-semibold text-text-primary mb-1">{item.label}</h4>
-              <p className="text-xs text-soft-industrial-gray">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ────────────────────────────────────────────────
-   ENTERPRISE READINESS
-   ──────────────────────────────────────────────── */
-function EnterpriseReadiness() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const features = [
-    '99.99% uptime SLA with dedicated support',
-    'Multi-tenant with tenant isolation',
-    'Custom branding and white-label options',
-    'Professional services and onboarding',
-    'Annual security audits and penetration testing',
-    'Custom model training for proprietary equipment',
-    'Integration with CMMS, ERP, and MES systems',
-    'Dedicated customer success manager',
-  ];
-
-  return (
-    <section ref={ref} className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6 }}>
-            <span className="text-industrial-copper font-mono text-sm uppercase tracking-wider mb-4 block">Enterprise</span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-text-primary mb-6 leading-tight">
-              Enterprise Readiness
-            </h2>
-            <p className="text-soft-industrial-gray leading-relaxed mb-8">
-              SensorPilots is built for the largest industrial organizations. Our enterprise tier includes everything needed for mission-critical deployments at scale.
-            </p>
-            <Link to="/contact" className="group inline-flex items-center gap-2 px-6 py-3 bg-primary-dark-teal hover:bg-primary-dark-teal/80 text-text-primary font-semibold rounded-lg transition-all">
-              Talk to Enterprise Sales
-              <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 40 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}>
-            <div className="space-y-3">
-              {features.map((f, i) => (
-                <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.3 + i * 0.08 }}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                  <CheckCircle2 className="w-5 h-5 text-primary-dark-teal flex-shrink-0" />
-                  <span className="text-sm text-text-primary">{f}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay }}
+    >
+      {children}
+    </motion.div>
   );
 }
 
 export default function Product() {
   return (
-    <div>
-      <ProductHero />
-      <PredictiveMaintenanceSystem />
-      <MachineHealthMonitoring />
-      <IndustrialAnalyticsLayer />
-      <TechnicalArchitecture />
-      <DeploymentOptions />
-      <APIIntegrations />
-      <SecurityCompliance />
-      <EnterpriseReadiness />
+    <div className="min-h-screen bg-background text-text-primary font-body selection:bg-industrial-copper selection:text-white overflow-x-hidden antialiased">
+
+      {/* GLOBAL INJECTED KINETIC DESIGN EFFECTS */}
+      <style>{`
+        @keyframes panGrid {
+          0% { background-position: 0px 0px; }
+          100% { background-position: 40px 40px; }
+        }
+        @keyframes floatNode {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.25; }
+          50% { transform: translateY(-15px) scale(1.08); opacity: 0.55; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
+          50% { transform: scale(1.15) translate(15px, -15px); opacity: 0.18; }
+        }
+        .animated-grid {
+          background-size: 40px 40px;
+          background-image:
+            linear-gradient(to right, rgba(16, 76, 100, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(16, 76, 100, 0.04) 1px, transparent 1px);
+          animation: panGrid 16s linear infinite;
+        }
+        .node-float-fast { animation: floatNode 5s ease-in-out infinite; }
+        .node-float-slow { animation: floatNode 8s ease-in-out infinite 1s; }
+        .node-float-delayed { animation: floatNode 11s ease-in-out infinite 2.2s; }
+        .radial-glow-1 { animation: pulseGlow 12s ease-in-out infinite alternate; }
+        .radial-glow-2 { animation: pulseGlow 15s ease-in-out infinite alternate-reverse; }
+      `}</style>
+
+      {/* SECTION 1: HERO */}
+      <section className="relative min-h-[95vh] flex items-center justify-center px-6 py-20 border-b border-white/[0.06] overflow-hidden bg-background">
+        <div className="absolute inset-0 animated-grid pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background pointer-events-none z-0" />
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary-dark-teal rounded-full blur-[140px] pointer-events-none radial-glow-1 z-0" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-industrial-copper rounded-full blur-[160px] pointer-events-none radial-glow-2 z-0" />
+        <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+          <div className="absolute top-[18%] left-[15%] w-8 h-8 bg-industrial-copper rounded-sm blur-[1px] node-float-fast" />
+          <div className="absolute top-[42%] left-[22%] w-11 h-11 bg-primary-dark-teal rounded-sm blur-[2px] node-float-slow" />
+          <div className="absolute top-[68%] left-[8%] w-12 h-12 bg-industrial-copper rounded-sm blur-[1px] node-float-delayed" />
+          <div className="absolute top-[78%] left-[42%] w-7 h-7 bg-primary-dark-teal rounded-sm blur-[2px] node-float-fast" />
+          <div className="absolute bottom-[18%] left-[26%] w-14 h-14 bg-industrial-copper rounded-sm blur-[3px] node-float-slow" />
+          <div className="absolute top-[12%] left-[78%] w-9 h-9 bg-primary-dark-teal rounded-sm blur-[1px] node-float-delayed" />
+          <div className="absolute bottom-[30%] left-[82%] w-11 h-11 bg-industrial-copper rounded-sm blur-[2px] node-float-fast" />
+          <div className="absolute top-[52%] left-[74%] w-10 h-10 bg-primary-dark-teal/40 rounded-sm blur-[3px] node-float-slow" />
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.07] border border-white/[0.1] backdrop-blur-md mb-6 shadow-xl">
+            <span className="w-2 h-2 rounded-full bg-[#4ecf8e] animate-pulse" />
+            <span className="text-xs font-mono tracking-wider text-soft-industrial-gray uppercase">Powered by NVIDIA H100 Tensor Core</span>
+          </div>
+
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight font-heading mb-6 bg-gradient-to-r from-white via-text-primary to-primary-dark-teal bg-clip-text text-transparent drop-shadow-sm">
+            Smart Grid Optimization & <br />
+            <span className="bg-gradient-to-r from-industrial-copper to-[#d4a030] bg-clip-text text-transparent">Energy Forecasting AI</span>
+          </h1>
+
+          <p className="text-[14px] text-[rgba(175,205,218,0.5)] leading-[1.65] max-w-[480px] mx-auto mb-10 font-body">
+            GridMinds AI scales infrastructure monitoring, utility automation, and renewable energy forecasting using next-generation parallel GPU architectures.
+          </p>
+
+          <div className="flex gap-2.5 flex-wrap items-center justify-center">
+            <Link
+              to="/product"
+              className="flex items-center gap-[7px] px-7 py-[13px] bg-[#e87040] hover:bg-[#cf5e30] rounded-lg text-white text-[15px] font-extrabold no-underline transition-all duration-200 hover:-translate-y-[1px]"
+            >
+              Launch Live Dashboard
+            </Link>
+            <Link
+              to="/#contact"
+              className="flex items-center gap-[7px] px-[26px] py-3 border-[1.5px] border-white/20 hover:border-white/48 rounded-lg text-[rgba(237,245,250,0.82)] text-[15px] font-bold no-underline transition-all duration-200 hover:-translate-y-[1px]"
+            >
+              Contact Us <span className="opacity-65 text-[16px]">›</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: BENTO GRID */}
+      <SectionWrapper className="bg-deep-machine-shadow/30 border-b border-white/[0.06]">
+        <div className="px-6 max-w-7xl mx-auto">
+          <AnimateIn>
+            <div className="mb-12">
+              <h2 className="text-4xl md:text-5xl font-black font-heading text-text-primary mb-2">Platform Capabilities</h2>
+              <p className="text-[13px] text-soft-industrial-gray">Autonomous energy intelligence encapsulated into highly performant layout matrices.</p>
+            </div>
+          </AnimateIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Large card */}
+            <AnimateIn delay={0.1}>
+              <div className="group/card md:col-span-2 row-span-2 relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col justify-between hover:bg-white/[0.06] hover:border-primary-dark-teal/40 transition-all duration-300">
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover/card:via-primary-dark-teal/60 transition-all duration-500" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-primary-dark-teal/10 rounded-full blur-[80px] pointer-events-none group-hover/card:bg-primary-dark-teal/20 transition-all" />
+                <div>
+                  <div className="p-3 bg-primary-dark-teal/10 rounded-xl w-fit mb-6 text-primary-dark-teal">
+                    <Activity size={28} />
+                  </div>
+                  <h3 className="text-[18px] font-bold font-heading mb-2">Real-Time SCADA & IoT Telemetry</h3>
+                  <p className="text-[11px] text-soft-industrial-gray max-w-xl font-body leading-relaxed">
+                    Processes and analyzes massive volumes of smart meter readings, substation monitoring loops, weather metrics, and transmission network status dynamically.
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center gap-4 text-[11px] font-mono text-[#4ecf8e]">
+                  <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#4ecf8e]" /> 100k+ streams/sec</span>
+                  <span className="text-white/[0.15]">|</span>
+                  <span className="text-soft-industrial-gray">Low-latency data processing pipelines</span>
+                </div>
+              </div>
+            </AnimateIn>
+
+            {/* Demand Forecasting */}
+            <AnimateIn delay={0.15}>
+              <div className="group/card relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col justify-between hover:bg-white/[0.06] hover:border-primary-dark-teal/40 transition-all duration-300 h-full">
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover/card:via-primary-dark-teal/60 transition-all duration-500" />
+                <div>
+                  <div className="p-3 bg-industrial-copper/10 rounded-xl w-fit mb-6 text-industrial-copper">
+                    <TrendingUp size={24} />
+                  </div>
+                  <h3 className="text-[15px] font-bold font-heading mb-2">Demand Forecasting</h3>
+                  <p className="text-[11px] text-soft-industrial-gray font-body leading-relaxed">
+                    Predictive insights mapped to weather influences and grid load histories.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-soft-industrial-gray/50">
+                  Real-time load pattern analysis
+                </div>
+              </div>
+            </AnimateIn>
+
+            {/* Anomaly Detection */}
+            <AnimateIn delay={0.2}>
+              <div className="group/card relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col justify-between hover:bg-white/[0.06] hover:border-primary-dark-teal/40 transition-all duration-300 h-full">
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover/card:via-primary-dark-teal/60 transition-all duration-500" />
+                <div>
+                  <div className="p-3 bg-[#d4a030]/10 rounded-xl w-fit mb-6 text-[#d4a030]">
+                    <ShieldAlert size={24} />
+                  </div>
+                  <h3 className="text-[15px] font-bold font-heading mb-2">Anomaly Detection</h3>
+                  <p className="text-[11px] text-soft-industrial-gray font-body leading-relaxed">
+                    Instant identification of infrastructural inefficiencies and potential network faults.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/[0.06] text-[11px] font-mono text-soft-industrial-gray/50">
+                  Multi-variate fault pattern matching
+                </div>
+              </div>
+            </AnimateIn>
+          </div>
+
+          {/* Renewable Energy Matrix — standalone full-width card */}
+          <AnimateIn delay={0.25}>
+            <div className="group/card mt-6 relative overflow-hidden rounded-xl border border-white/[0.07] bg-white/[0.025] p-8 flex flex-col md:flex-row items-start md:items-center gap-6 hover:bg-white/[0.06] hover:border-primary-dark-teal/40 transition-all duration-300">
+              <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover/card:via-primary-dark-teal/60 transition-all duration-500" />
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#4ecf8e]/10 text-[#4ecf8e] border border-[#4ecf8e]/20">LIVE METRIC</span>
+                  <h3 className="text-[18px] font-bold font-heading">Renewable Energy Matrix</h3>
+                </div>
+                <p className="text-[11px] text-soft-industrial-gray font-body leading-relaxed">
+                  GridMinds optimizes multi-tier clean energy integrations, regulating solar fluctuations and wind yield forecasts against active battery energy storage performance metrics.
+                </p>
+              </div>
+              <div className="p-4 bg-background rounded-xl border border-white/[0.07] font-mono text-[11px] w-full md:w-64 shrink-0">
+                <div className="flex justify-between mb-2">
+                  <span className="text-soft-industrial-gray/70">Solar Index:</span>
+                  <span className="text-[#4ecf8e] font-semibold">94.2% Eff</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-soft-industrial-gray/70">Grid Strain:</span>
+                  <span className="text-[#d4a030] font-semibold">Nominal Minimal</span>
+                </div>
+              </div>
+            </div>
+          </AnimateIn>
+        </div>
+      </SectionWrapper>
+
+      {/* SECTION 3: DEEP TECH */}
+      <SectionWrapper className="border-b border-white/[0.06]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-primary-dark-teal/10 rounded-full blur-[140px] pointer-events-none" />
+
+        <div className="px-6 max-w-4xl mx-auto">
+          <AnimateIn>
+            <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] backdrop-blur-xl p-8 md:p-12 relative z-10 shadow-2xl">
+              <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+                <div className="md:col-span-3">
+                  <h3 className="text-[18px] font-bold font-heading mb-3 text-text-primary">Autonomous Energy Intelligence Engine</h3>
+                  <p className="text-soft-industrial-gray font-body text-[11px] leading-relaxed mb-3">
+                    Our platform continuously reviews structural performance markers, power outputs, weather fluctuations, and infrastructure patterns to issue intelligent recommendations.
+                  </p>
+                  <p className="text-soft-industrial-gray font-body text-[11px] leading-relaxed">
+                    By accelerating analytics workloads, GridMinds reduces standard iteration friction, empowering utilities to execute immediate grid re-routing strategies safely.
+                  </p>
+                </div>
+                <div className="md:col-span-2 space-y-4 font-mono text-[11px]">
+                  <div className="p-4 rounded-xl bg-background border border-white/[0.07]">
+                    <span className="block text-soft-industrial-gray/70 mb-1">// SYSTEM METRIC</span>
+                    <div className="text-text-primary font-semibold text-[13px]">Predictive Latency &lt; 14ms</div>
+                  </div>
+                  <div className="p-4 rounded-xl bg-background border border-white/[0.07]">
+                    <span className="block text-soft-industrial-gray/70 mb-1">// FAILURE HAZARD PREDICTION</span>
+                    <div className="text-[#4ecf8e] font-semibold text-[13px]">99.4% Critical Accuracy</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimateIn>
+        </div>
+      </SectionWrapper>
+
+      {/* SECTION 4: NVIDIA SDK */}
+      <SectionWrapper className="bg-deep-machine-shadow/30 border-b border-white/[0.06]">
+        <div className="px-6 max-w-7xl mx-auto">
+          <AnimateIn>
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-4xl md:text-5xl font-black font-heading text-text-primary mb-3">Accelerated GPU Framework Integration</h2>
+              <p className="text-[13px] text-soft-industrial-gray font-body">Leveraging NVIDIA's deep computational software layer to handle processing pipelines seamlessly.</p>
+            </div>
+          </AnimateIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              { title: "NVIDIA NeMo", desc: "Builds context-aware models interpreting consumption patterns and grid behaviors." },
+              { title: "NVIDIA RAPIDS", desc: "Speeds up data ingestion of multi-million sensor inputs and telemetry feeds." },
+              { title: "NVIDIA TensorRT", desc: "Optimizes models to output lightning-fast pipeline state classifications." },
+              { title: "NVIDIA Triton", desc: "Ensures scalable, concurrent cross-cluster network model inferencing." },
+              { title: "NVIDIA CUDA", desc: "Powers low-level multi-threaded linear algebraic compute layers." }
+            ].map((sdk, index) => (
+              <AnimateIn key={index} delay={0.1 + index * 0.08}>
+                <div className="group/card p-6 rounded-xl border border-white/[0.07] bg-white/[0.025] flex flex-col justify-between hover:bg-white/[0.06] hover:border-primary-dark-teal/40 transition-all duration-300">
+                  <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover/card:via-primary-dark-teal/60 transition-all duration-500" />
+                  <div>
+                    <div className="text-[10px] font-mono text-primary-dark-teal mb-2">SDK MODULE 0{index + 1}</div>
+                    <h4 className="text-[15px] font-bold font-heading text-text-primary mb-1">{sdk.title}</h4>
+                  </div>
+                  <p className="text-[11px] text-soft-industrial-gray font-body leading-relaxed mt-3">{sdk.desc}</p>
+                </div>
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* SECTION 5: AWS EDGE */}
+      <SectionWrapper className="border-b border-white/[0.06]">
+        <div className="absolute top-1/2 right-10 w-80 h-80 bg-industrial-copper/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <div className="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <AnimateIn>
+            <div>
+              <div className="inline-block px-3 py-1 rounded bg-industrial-copper/10 text-industrial-copper text-[10px] font-mono mb-4 border border-industrial-copper/20">
+                AWS EC2 ARCHITECTURE
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black font-heading text-text-primary mb-4">Enterprise Cloud Scalability</h2>
+              <p className="text-[11px] text-soft-industrial-gray font-body mb-6 leading-relaxed">
+                We design and configure GridMinds AI systems to scale horizontally over high-performance AWS GPU clusters. These target environments maintain operational precision even under highly demanding concurrent workloads.
+              </p>
+
+              <div className="space-y-4">
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 p-1.5 bg-white/[0.07] rounded text-primary-dark-teal"><Cpu size={16} /></div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-[13px] text-text-primary">Amazon EC2 P5 Instances</h4>
+                    <p className="text-[11px] text-soft-industrial-gray font-body">Leveraging modern NVIDIA H100 Tensor Core GPUs for major model optimization cycles.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4 items-start">
+                  <div className="mt-1 p-1.5 bg-white/[0.07] rounded text-primary-dark-teal"><Layers size={16} /></div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-[13px] text-text-primary">Amazon EC2 P4d Instances</h4>
+                    <p className="text-[11px] text-soft-industrial-gray font-body">Utilizing distributed NVIDIA A100 setups for sustained regional forecasting arrays.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </AnimateIn>
+
+          <AnimateIn delay={0.2}>
+            <div className="p-6 rounded-xl bg-background border border-white/[0.07] font-mono text-[11px] text-soft-industrial-gray relative shadow-2xl">
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-red-500/40" />
+                  <span className="w-3 h-3 rounded-full bg-[#d4a030]/40" />
+                  <span className="w-3 h-3 rounded-full bg-[#4ecf8e]/40" />
+                  <span className="text-[11px] text-soft-industrial-gray/50 ml-2">aws_cluster_config.json</span>
+                </div>
+                <Terminal size={14} className="text-soft-industrial-gray/40" />
+              </div>
+              <pre className="text-soft-industrial-gray/70 overflow-x-auto p-2 bg-white/[0.025] rounded-lg">
+{`{
+  "infrastructure": {
+    "provider": "AWS",
+    "target_instances": ["p5.48xlarge", "p4d.24xlarge"],
+    "accelerators": "NVIDIA H100 Tensor Core",
+    "orchestration": "Triton Inference Server"
+  },
+  "workloads": {
+    "smart_grid_optimizations": "active",
+    "load_balancing_concurrency": "scaled",
+    "telemetry_ingest_rate": "real-time"
+  }
+}`}
+              </pre>
+            </div>
+          </AnimateIn>
+        </div>
+      </SectionWrapper>
+
+      {/* SECTION 6: METRICS */}
+      <SectionWrapper className="bg-deep-machine-shadow/30">
+        <div className="px-6 max-w-7xl mx-auto">
+          <AnimateIn>
+            <div className="p-8 md:p-16 rounded-xl border border-white/[0.07] bg-white/[0.025] relative overflow-hidden">
+              <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#4ecf8e]/5 rounded-full blur-[120px] pointer-events-none" />
+
+              <div className="max-w-3xl">
+                <h2 className="text-4xl md:text-5xl font-black font-heading text-text-primary mb-4">Our Core Scalability Commitments</h2>
+                <p className="text-[13px] text-soft-industrial-gray font-body mb-10">
+                  We focus on shifting global energy management platforms into optimized, proactive infrastructures using accelerated intelligence layers.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/[0.06]">
+                <div>
+                  <div className="text-2xl md:text-[28px] font-black font-heading text-industrial-copper mb-1">Accelerated</div>
+                  <p className="text-[10px] text-soft-industrial-gray/70 font-body uppercase tracking-wider">Training Pipelines</p>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-[28px] font-black font-heading text-[#4ecf8e] mb-1">Enhanced</div>
+                  <p className="text-[10px] text-soft-industrial-gray/70 font-body uppercase tracking-wider">Demand Accuracy</p>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-[28px] font-black font-heading text-text-primary mb-1">Optimized</div>
+                  <p className="text-[10px] text-soft-industrial-gray/70 font-body uppercase tracking-wider">Renewable Ingestion</p>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-[28px] font-black font-heading text-primary-dark-teal mb-1">Enterprise</div>
+                  <p className="text-[10px] text-soft-industrial-gray/70 font-body uppercase tracking-wider">Scale Validation</p>
+                </div>
+              </div>
+            </div>
+          </AnimateIn>
+        </div>
+      </SectionWrapper>
+
     </div>
   );
 }

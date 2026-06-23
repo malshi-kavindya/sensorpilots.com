@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Clock, Calendar, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../../data/blogPosts';
+import BlogModal from '../BlogModal';
 
 const categories = ['All', 'Industrial AI', 'Architecture', 'Strategy', 'Analytics', 'AI Research', 'Integration', 'Technology', 'Operations', 'Energy', 'Automotive', 'Engineering', 'Research'];
 
@@ -9,6 +10,7 @@ export default function BlogContent() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[number] | null>(null);
 
   const filtered = blogPosts.filter((post) => {
     return activeCategory === 'All' || post.category === activeCategory;
@@ -100,7 +102,7 @@ export default function BlogContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {filtered.map((post, i) => (
               i === 0 ? (
-                <div key={post.id} className="md:col-span-2 lg:col-span-3 group relative rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 overflow-hidden cursor-pointer">
+                <div key={post.id} onClick={() => setSelectedPost(post)} className="md:col-span-2 lg:col-span-3 group relative rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 overflow-hidden cursor-pointer">
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/60 to-transparent" />
                   <div className="p-8 md:p-12 grid md:grid-cols-2 gap-8 items-center">
                     <div>
@@ -128,7 +130,7 @@ export default function BlogContent() {
                   </div>
                 </div>
               ) : (
-                <div key={post.id} className="group relative flex flex-col rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 cursor-pointer p-7 overflow-hidden">
+                <div key={post.id} onClick={() => setSelectedPost(post)} className="group relative flex flex-col rounded-xl border border-white/[0.07] bg-white/[0.025] hover:bg-white/[0.06] hover:border-[rgba(16,76,100,0.45)] transition-all duration-300 cursor-pointer p-7 overflow-hidden">
                   <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-industrial-copper/0 to-transparent group-hover:via-industrial-copper/50 transition-all duration-500" />
                   <div className="flex items-center justify-between mb-5">
                     <span className="px-2.5 py-1 rounded-full text-[9px] uppercase tracking-[0.16em] font-bold bg-industrial-copper/10 text-industrial-copper border border-industrial-copper/15">{post.category}</span>
@@ -145,6 +147,8 @@ export default function BlogContent() {
             ))}
           </div>
         )}
+
+      <BlogModal post={selectedPost} onClose={() => setSelectedPost(null)} />
       </div>
     </section>
   );

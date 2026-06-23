@@ -1,0 +1,328 @@
+﻿import React from 'react';
+import { 
+  Cpu, 
+  Database, 
+  Zap, 
+  Activity, 
+  TrendingUp, 
+  ShieldAlert, 
+  Layers, 
+  Terminal, 
+  LineChart 
+} from 'lucide-react';
+
+export default function GridMindsProductPage() {
+  return (
+    <div className="min-h-screen bg-[#0b1820] text-[#edf2f5] font-sans selection:bg-[#e87040] selection:text-white overflow-x-hidden antialiased">
+      
+      {/* GLOBAL INJECTED KINETIC DESIGN EFFECTS */}
+      <style>{`
+        @keyframes panGrid {
+          0% { background-position: 0px 0px; }
+          100% { background-position: 40px 40px; }
+        }
+        @keyframes floatNode {
+          0%, 100% { transform: translateY(0px) scale(1); opacity: 0.25; }
+          50% { transform: translateY(-15px) scale(1.08); opacity: 0.55; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { transform: scale(1) translate(0px, 0px); opacity: 0.12; }
+          50% { transform: scale(1.15) translate(15px, -15px); opacity: 0.18; }
+        }
+        .animated-grid {
+          background-size: 40px 40px;
+          background-image: 
+            linear-gradient(to right, rgba(26, 122, 154, 0.04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(26, 122, 154, 0.04) 1px, transparent 1px);
+          animation: panGrid 16s linear infinite;
+        }
+        .node-float-fast { animation: floatNode 5s ease-in-out infinite; }
+        .node-float-slow { animation: floatNode 8s ease-in-out infinite 1s; }
+        .node-float-delayed { animation: floatNode 11s ease-in-out infinite 2.2s; }
+        .radial-glow-1 { animation: pulseGlow 12s ease-in-out infinite alternate; }
+        .radial-glow-2 { animation: pulseGlow 15s ease-in-out infinite alternate-reverse; }
+      `}</style>
+
+      {/* SECTION 1: HERO WITH ASYMMETRIC BACKGROUND PLATFORM LAYOUT */}
+      <section className="relative min-h-[95vh] flex items-center justify-center px-6 py-20 border-b border-slate-800 overflow-hidden bg-[#0b1820]">
+        
+        {/* Base Infinite Moving Mesh Grid Matrix */}
+        <div className="absolute inset-0 animated-grid pointer-events-none z-0" />
+        
+        {/* Depth & Edge Fade Shaders */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b1820]/40 via-transparent to-[#0b1820] pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0b1820] via-transparent to-[#0b1820] pointer-events-none z-0" />
+
+        {/* Premium Soft Morphing Atmospheric Glow Overlays */}
+        <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-[#1a7a9a] rounded-full blur-[140px] pointer-events-none radial-glow-1 z-0" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#e87040] rounded-full blur-[160px] pointer-events-none radial-glow-2 z-0" />
+        
+        {/* Dynamic Architectural Tech Nodes Background Pattern */}
+        <div className="absolute inset-0 pointer-events-none z-0 opacity-40">
+          <div className="absolute top-[18%] left-[15%] w-8 h-8 bg-[#e87040] rounded-sm blur-[1px] node-float-fast" />
+          <div className="absolute top-[42%] left-[22%] w-11 h-11 bg-[#1a7a9a] rounded-sm blur-[2px] node-float-slow" />
+          <div className="absolute top-[68%] left-[8%] w-12 h-12 bg-[#e87040] rounded-sm blur-[1px] node-float-delayed" />
+          <div className="absolute top-[78%] left-[42%] w-7 h-7 bg-[#1a7a9a] rounded-sm blur-[2px] node-float-fast" />
+          <div className="absolute bottom-[18%] left-[26%] w-14 h-14 bg-[#e87040] rounded-sm blur-[3px] node-float-slow" />
+          <div className="absolute top-[12%] left-[78%] w-9 h-9 bg-[#1a7a9a] rounded-sm blur-[1px] node-float-delayed" />
+          <div className="absolute bottom-[30%] left-[82%] w-11 h-11 bg-[#e87040] rounded-sm blur-[2px] node-float-fast" />
+          <div className="absolute top-[52%] left-[74%] w-10 h-10 bg-[#1a7a9a]/40 rounded-sm blur-[3px] node-float-slow" />
+        </div>
+        
+        {/* Hero Content Block */}
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/50 backdrop-blur-md mb-6 shadow-xl">
+            <span className="w-2 h-2 rounded-full bg-[#4ecf8e] animate-pulse"></span>
+            <span className="text-xs font-mono tracking-wider text-slate-300 uppercase">Powered by NVIDIA H100 Tensor Core</span>
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight font-heading mb-6 bg-gradient-to-r from-white via-[#edf2f5] to-[#1a7a9a] bg-clip-text text-transparent drop-shadow-sm">
+            Smart Grid Optimization & <br />
+            <span className="bg-gradient-to-r from-[#e87040] to-[#d4a030] bg-clip-text text-transparent">Energy Forecasting AI</span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-body">
+            GridMinds AI scales infrastructure monitoring, utility automation, and renewable energy forecasting using next-generation parallel GPU architectures.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#e87040] hover:bg-[#e87040]/90 font-medium tracking-wide shadow-lg shadow-[#e87040]/30 transition-all transform hover:-translate-y-0.5">
+              Launch Live Dashboard
+            </button>
+            <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/60 border border-slate-700 hover:border-slate-500 backdrop-blur-md transition-all font-medium text-slate-300">
+             Contact Us
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: BENTO GRID DASHBOARD */}
+      <section className="py-24 px-6 max-w-7xl mx-auto border-b border-slate-800">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold font-heading text-[#edf2f5] mb-2">Platform Capabilities</h2>
+          <p className="text-slate-400">Autonomous energy intelligence encapsulated into highly performant layout matrices.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Main Card - Hero Stream */}
+          <div className="md:col-span-2 row-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900/80 to-slate-900/20 border border-slate-800 backdrop-blur-xl p-8 flex flex-col justify-between group hover:border-[#1a7a9a]/50 transition-all duration-500">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#1a7a9a]/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-[#1a7a9a]/20 transition-all" />
+            <div>
+              <div className="p-3 bg-[#1a7a9a]/10 rounded-xl w-fit mb-6 text-[#1a7a9a]">
+                <Activity size={28} />
+              </div>
+              <h3 className="text-2xl font-bold font-heading mb-3">Real-Time SCADA & IoT Telemetry</h3>
+              <p className="text-slate-400 max-w-xl font-body leading-relaxed">
+                Processes and analyzes massive volumes of smart meter readings, substation monitoring loops, weather metrics, and transmission network status dynamically.
+              </p>
+            </div>
+            <div className="mt-8 pt-6 border-t border-slate-800/60 flex items-center gap-4 text-xs font-mono text-[#4ecf8e]">
+              <span className="flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-[#4ecf8e]"></span> 100k+ streams/sec</span>
+              <span className="text-slate-600">|</span>
+              <span className="text-slate-400">Low-latency data processing pipelines</span>
+            </div>
+          </div>
+
+          {/* Card 2 - Demand Metrics */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900/80 to-slate-900/20 border border-slate-800 backdrop-blur-xl p-8 flex flex-col justify-between group hover:border-[#e87040]/50 transition-all duration-500">
+            <div>
+              <div className="p-3 bg-[#e87040]/10 rounded-xl w-fit mb-6 text-[#e87040]">
+                <TrendingUp size={24} />
+              </div>
+              <h3 className="text-xl font-bold font-heading mb-2">Demand Forecasting</h3>
+              <p className="text-sm text-slate-400 font-body">
+                Predictive insights mapped to weather influences and grid load histories.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 3 - Threat Assessment */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900/80 to-slate-900/20 border border-slate-800 backdrop-blur-xl p-8 flex flex-col justify-between group hover:border-[#d4a030]/50 transition-all duration-500">
+            <div>
+              <div className="p-3 bg-[#d4a030]/10 rounded-xl w-fit mb-6 text-[#d4a030]">
+                <ShieldAlert size={24} />
+              </div>
+              <h3 className="text-xl font-bold font-heading mb-2">Anomaly Detection</h3>
+              <p className="text-sm text-slate-400 font-body">
+                Instant identification of infrastructural inefficiencies and potential network faults.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 4 - Full Width Metric Block */}
+          <div className="md:col-span-3 relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900/90 to-slate-900/40 border border-slate-800 backdrop-blur-xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between group hover:border-[#4ecf8e]/40 transition-all duration-500">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#4ecf8e]/10 text-[#4ecf8e] border border-[#4ecf8e]/20">LIVE METRIC</span>
+                <h3 className="text-xl font-bold font-heading">Renewable Energy Matrix</h3>
+              </div>
+              <p className="text-sm text-slate-400 font-body">
+                GridMinds optimizes multi-tier clean energy integrations, regulating solar fluctuations and wind yield forecasts against active battery energy storage performance metrics.
+              </p>
+            </div>
+            <div className="mt-4 md:mt-0 p-4 bg-slate-950/80 rounded-xl border border-slate-800 font-mono text-xs w-full md:w-auto min-w-[220px]">
+              <div className="flex justify-between mb-1">
+                <span className="text-slate-500">Solar Index:</span>
+                <span className="text-[#4ecf8e]">94.2% Eff</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500">Grid Strain:</span>
+                <span className="text-[#d4a030]">Nominal Minimal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: DEEP TECH INTERMEDIATE BRIEF */}
+      <section className="py-24 px-6 relative overflow-hidden border-b border-slate-800">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#1a7a9a]/10 rounded-full blur-[140px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto rounded-3xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-xl p-8 md:p-12 relative z-10 shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
+            <div className="md:col-span-3">
+              <h3 className="text-2xl font-bold font-heading mb-4 text-[#edf2f5]">Autonomous Energy Intelligence Engine</h3>
+              <p className="text-slate-400 font-body text-sm leading-relaxed mb-4">
+                Our platform continuously reviews structural performance markers, power outputs, weather fluctuations, and infrastructure patterns to issue intelligent recommendations.
+              </p>
+              <p className="text-slate-400 font-body text-sm leading-relaxed">
+                By accelerating analytics workloads, GridMinds reduces standard iteration friction, empowering utilities to execute immediate grid re-routing strategies safely.
+              </p>
+            </div>
+            <div className="md:col-span-2 space-y-4 font-mono text-xs">
+              <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                <span className="block text-slate-500 mb-1">// SYSTEM METRIC</span>
+                <div className="text-[#edf2f5] font-semibold text-sm">Predictive Latency &lt; 14ms</div>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                <span className="block text-slate-500 mb-1">// FAILURE HAZARD PREDICTION</span>
+                <div className="text-[#4ecf8e] font-semibold text-sm">99.4% Critical Accuracy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: NVIDIA SDK COMPUTE FRAMEWORK LAYER */}
+      <section className="py-24 px-6 max-w-7xl mx-auto border-b border-slate-800">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl font-bold font-heading text-[#edf2f5] mb-4">Accelerated GPU Framework Integration</h2>
+          <p className="text-slate-400 font-body">Leveraging NVIDIA’s deep computational software layer to handle processing pipelines seamlessly.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+          {[
+            { title: "NVIDIA NeMo", desc: "Builds context-aware models interpreting consumption patterns and grid behaviors." },
+            { title: "NVIDIA RAPIDS", desc: "Speeds up data ingestion of multi-million sensor inputs and telemetry feeds." },
+            { title: "NVIDIA TensorRT", desc: "Optimizes models to output lightning-fast pipeline state classifications." },
+            { title: "NVIDIA Triton", desc: "Ensures scalable, concurrent cross-cluster network model inferencing." },
+            { title: "NVIDIA CUDA", desc: "Powers low-level multi-threaded linear algebraic compute layers." }
+          ].map((sdk, index) => (
+            <div key={index} className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between hover:bg-slate-900/90 transition-colors">
+              <div>
+                <div className="text-xs font-mono text-[#1a7a9a] mb-3">SDK MODULE 0{index + 1}</div>
+                <h4 className="text-lg font-bold font-heading text-white mb-2">{sdk.title}</h4>
+              </div>
+              <p className="text-xs text-slate-400 font-body leading-relaxed mt-4">{sdk.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SECTION 5: AWS EDGE NODE ARCHITECTURE */}
+      <section className="py-24 px-6 relative overflow-hidden border-b border-slate-800">
+        <div className="absolute top-1/2 right-10 w-80 h-80 bg-[#e87040]/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-block px-3 py-1 rounded bg-[#e87040]/10 text-[#e87040] text-xs font-mono mb-4 border border-[#e87040]/20">
+              AWS EC2 ARCHITECTURE
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-6">Enterprise Cloud Scalability</h2>
+            <p className="text-slate-400 font-body mb-6 leading-relaxed">
+              We design and configure GridMinds AI systems to scale horizontally over high-performance AWS GPU clusters. These target environments maintain operational precision even under highly demanding concurrent workloads.
+            </p>
+
+            <div className="space-y-4">
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 p-1.5 bg-slate-800 rounded text-[#1a7a9a]"><Cpu size={16} /></div>
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-white">Amazon EC2 P5 Instances</h4>
+                  <p className="text-xs text-slate-400 font-body">Leveraging modern NVIDIA H100 Tensor Core GPUs for major model optimization cycles.</p>
+                </div>
+              </div>
+              <div className="flex gap-4 items-start">
+                <div className="mt-1 p-1.5 bg-slate-800 rounded text-[#1a7a9a]"><Layers size={16} /></div>
+                <div>
+                  <h4 className="font-heading font-semibold text-sm text-white">Amazon EC2 P4d Instances</h4>
+                  <p className="text-xs text-slate-400 font-body">Utilizing distributed NVIDIA A100 setups for sustained regional forecasting arrays.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800 font-mono text-xs text-slate-300 relative shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-900 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-red-500/40"></span>
+                <span className="w-3 h-3 rounded-full bg-[#d4a030]/40"></span>
+                <span className="w-3 h-3 rounded-full bg-[#4ecf8e]/40"></span>
+                <span className="text-[11px] text-slate-500 ml-2">aws_cluster_config.json</span>
+              </div>
+              <Terminal size={14} className="text-slate-600" />
+            </div>
+            <pre className="text-slate-400 overflow-x-auto p-2 bg-slate-900/30 rounded-lg">
+{`{
+  "infrastructure": {
+    "provider": "AWS",
+    "target_instances": ["p5.48xlarge", "p4d.24xlarge"],
+    "accelerators": "NVIDIA H100 Tensor Core",
+    "orchestration": "Triton Inference Server"
+  },
+  "workloads": {
+    "smart_grid_optimizations": "active",
+    "load_balancing_concurrency": "scaled",
+    "telemetry_ingest_rate": "real-time"
+  }
+}`}
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: METRICS TARGETS */}
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div className="p-8 md:p-16 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/60 to-transparent border border-slate-800 relative overflow-hidden">
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#4ecf8e]/5 rounded-full blur-[120px] pointer-events-none" />
+          
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-bold font-heading text-white mb-6">Our Core Scalability Commitments</h2>
+            <p className="text-slate-400 font-body mb-10">
+              We focus on shifting global energy management platforms into optimized, proactive infrastructures using accelerated intelligence layers.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-slate-800/80">
+            <div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-[#e87040] mb-1">Accelerated</div>
+              <p className="text-xs text-slate-500 font-body uppercase tracking-wider">Training Pipelines</p>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-[#4ecf8e] mb-1">Enhanced</div>
+              <p className="text-xs text-slate-500 font-body uppercase tracking-wider">Demand Accuracy</p>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-[#edf2f5] mb-1">Optimized</div>
+              <p className="text-xs text-slate-500 font-body uppercase tracking-wider">Renewable Ingestion</p>
+            </divs
+            <div>
+              <div className="text-2xl md:text-3xl font-bold font-heading text-[#1a7a9a] mb-1">Enterprise</div>
+              <p className="text-xs text-slate-500 font-body uppercase tracking-wider">Scale Validation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
