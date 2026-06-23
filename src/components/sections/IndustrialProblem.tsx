@@ -4,6 +4,10 @@ export default function IndustrialProblem() {
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
 .ip-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.ip-bg{position:absolute;inset:0;pointer-events:none}
+.ip-grid-lines{position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px);background-size:80px 80px}
+.ip-glow1{position:absolute;top:33%;left:25%;width:384px;height:384px;border-radius:50%;background:rgba(16,76,100,0.08);filter:blur(120px)}
+.ip-glow2{position:absolute;bottom:25%;right:33%;width:320px;height:320px;border-radius:50%;background:rgba(16,76,100,0.05);filter:blur(100px)}
 .ip-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .ip-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;margin-bottom:20px}
 .ip-tag::before{content:'';display:block;width:28px;height:1px;background:rgba(232,112,64,0.35)}
@@ -54,6 +58,11 @@ export default function IndustrialProblem() {
       <h2 className="sr-only">The industrial problem — operations running blind without predictive AI</h2>
 
       <div className="ip-root">
+        <div className="ip-bg">
+          <div className="ip-grid-lines" />
+          <div className="ip-glow1" />
+          <div className="ip-glow2" />
+        </div>
         <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
         <div className="ip-content">
           <div>

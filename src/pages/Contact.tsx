@@ -127,20 +127,20 @@ function ContactForm() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-text-primary mb-1">First Name</label>
-                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="John" />
+                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Enter your first name" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-text-primary mb-1">Last Name</label>
-                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Doe" />
+                      <input type="text" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Enter your last name" />
                     </div>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Email</label>
-                    <input type="email" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="john@company.com" />
+                    <input type="email" required className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="you@company.com" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Company</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Acme Manufacturing" />
+                    <input type="text" className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-text-primary placeholder-soft-industrial-gray focus:outline-none focus:border-primary-dark-teal/40 transition-colors" placeholder="Your company name" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-1">Message</label>

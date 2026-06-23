@@ -64,8 +64,14 @@ export default function CommandCenterPreview() {
   ];
 
   return (
-    <section ref={ref} className="py-24 bg-deep-machine-shadow/30">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="command-center" ref={ref} className="relative py-24 bg-deep-machine-shadow/30 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-primary-dark-teal/8 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-primary-dark-teal/5 blur-[100px]" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
 .cc-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
@@ -109,7 +115,7 @@ export default function CommandCenterPreview() {
                   className={`font-mono text-[10px] px-2.5 py-1 rounded ${
                     tab === 'Overview'
                       ? 'bg-white/10 text-[rgba(200,220,228,0.7)]'
-                      : 'text-[rgba(200,220,228,0.25)] hover:text-[rgba(200,220,228,0.5)] cursor-pointer transition-colors'
+                      : 'text-[rgba(200,220,228,0.25)] transition-colors'
                   }`}
                 >
                   {tab}

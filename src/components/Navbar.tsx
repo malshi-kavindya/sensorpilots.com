@@ -51,12 +51,12 @@ export default function Navbar() {
           SYNTHOS
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-[22px]">
+        <nav className="hidden lg:flex items-center gap-[22px] font-heading">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
-              className={`relative text-[13px] no-underline transition-colors duration-300 ${
+              className={`relative text-[13px] tracking-wide no-underline transition-colors duration-300 ${
                 isActive(link.href)
                   ? 'text-white/75'
                   : 'text-white/35 hover:text-white/75'
@@ -84,8 +84,8 @@ export default function Navbar() {
             </span>
           ))}
           <Link
-            to="/#contact"
-            className="flex items-center gap-[5px] px-3 py-[5px] rounded-full border-[0.5px] border-[rgba(16,76,100,0.55)] bg-[rgba(16,76,100,0.35)] text-[12px] text-[rgba(200,225,235,0.75)] no-underline cursor-pointer select-none"
+            to="/product"
+            className="flex items-center gap-[5px] px-3 py-[5px] rounded-full border-[0.5px] border-primary-dark-teal/55 bg-primary-dark-teal text-[12px] text-white no-underline cursor-pointer select-none hover:bg-primary-dark-teal/85 transition-colors"
           >
             Get Started ⊞
           </Link>
@@ -114,7 +114,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`px-3 py-3 text-[13px] no-underline rounded-lg transition-colors ${
+                  className={`px-3 py-3 text-[13px] no-underline rounded-lg transition-colors font-heading tracking-wide ${
                     isActive(link.href)
                       ? 'text-white/75 bg-[rgba(16,76,100,0.35)]'
                       : 'text-white/35 hover:text-white/75 hover:bg-white/5'
@@ -124,8 +124,8 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                to="/#contact"
-                className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-full border-[0.5px] border-[rgba(16,76,100,0.55)] bg-[rgba(16,76,100,0.35)] text-[12px] text-[rgba(200,225,235,0.75)] no-underline"
+                to="/product"
+                className="mt-3 flex items-center justify-center gap-2 px-5 py-3 rounded-full border-[0.5px] border-primary-dark-teal/55 bg-primary-dark-teal text-[12px] text-white no-underline hover:bg-primary-dark-teal/85 transition-colors"
               >
                 Get Started ⊞
               </Link>

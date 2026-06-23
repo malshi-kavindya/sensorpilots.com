@@ -9,23 +9,23 @@ const footerSections = [
       { label: 'Product', href: '/product' },
       { label: 'Features', href: '/#features' },
       { label: 'Pricing', href: '/#pricing' },
-      { label: 'API Docs', href: '/api-docs' },
+      { label: 'API Docs', comingSoon: true },
     ],
   },
   {
     title: 'Resources',
     links: [
       { label: 'Blog', href: '/#blog' },
-      { label: 'Whitepapers', href: '/#resources' },
-      { label: 'Case Studies', href: '/#resources' },
-      { label: 'Technical Guides', href: '/#resources' },
+      { label: 'How It Works', href: '/#how-it-works' },
+      { label: 'Use Cases', href: '/#use-cases' },
+      { label: 'Technical Guides', comingSoon: true },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'About', href: '/#about' },
-      { label: 'Careers', href: '/#careers' },
+      { label: 'Vision & Mission', href: '/#vision-mission' },
       { label: 'Contact', href: '/#contact' },
     ],
   },
@@ -162,19 +162,28 @@ export default function Footer() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: si * 0.07 }}
               >
-                <p className="text-[10px] uppercase tracking-[0.22em] font-bold text-soft-industrial-gray/50 mb-5">
+                <p className="text-[10px] uppercase tracking-[0.22em] font-bold text-soft-industrial-gray/50 mb-5 font-heading">
                   {section.title}
                 </p>
                 <ul className="space-y-3">
-                  {section.links.map((link) => (
+                  {section.links.map((link: any) => (
                     <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        className="group flex items-center gap-1 text-sm text-soft-industrial-gray/70 hover:text-text-primary transition-colors duration-200"
-                      >
-                        {link.label}
-                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                      </Link>
+                      {link.comingSoon ? (
+                        <span className="flex items-center gap-2 text-sm text-soft-industrial-gray/40 cursor-default font-heading tracking-wide">
+                          {link.label}
+                          <span className="text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-white/5 text-soft-industrial-gray/50 font-semibold">
+                            Coming Soon
+                          </span>
+                        </span>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="group flex items-center gap-1 text-sm text-soft-industrial-gray/70 hover:text-text-primary transition-colors duration-200 font-heading tracking-wide"
+                        >
+                          {link.label}
+                          <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -198,7 +207,7 @@ export default function Footer() {
               <span key={label} className="flex items-center gap-1">
                 <Link
                   to={href}
-                  className="text-[11px] text-soft-industrial-gray/40 hover:text-soft-industrial-gray transition-colors px-2"
+                  className="text-[11px] text-soft-industrial-gray/40 hover:text-soft-industrial-gray transition-colors px-2 font-heading tracking-wide"
                 >
                   {label}
                 </Link>

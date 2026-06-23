@@ -242,12 +242,12 @@ export default function ContactForm() {
                   <input type="hidden" name="form-type" value={formType} />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
-                    <FloatingInput label="First Name" name="first-name" required placeholder="John" errors={state.errors} />
-                    <FloatingInput label="Last Name" name="last-name" required placeholder="Doe" errors={state.errors} />
+                    <FloatingInput label="First Name" name="first-name" required placeholder="Enter your first name" errors={state.errors} />
+                    <FloatingInput label="Last Name" name="last-name" required placeholder="Enter your last name" errors={state.errors} />
                   </div>
 
-                  <FloatingInput label="Work Email" name="email" type="email" required placeholder="john@company.com" errors={state.errors} />
-                  <FloatingInput label="Company" name="company" placeholder="Acme Manufacturing" />
+                  <FloatingInput label="Work Email" name="email" type="email" required placeholder="you@company.com" errors={state.errors} />
+                  <FloatingInput label="Company" name="company" placeholder="Your company name" />
 
                   {/* Textarea */}
                   <div className="relative group">

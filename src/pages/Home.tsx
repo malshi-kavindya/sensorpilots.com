@@ -28,13 +28,19 @@ export default function Home() {
       <PlatformOverview />
       <div id="about">
         <StorySection />
+      </div>
+      <div id="vision-mission">
         <MissionVision />
       </div>
       <IndustrialProblem />
       
       <CommandCenterPreview />
-      <HowItWorks />
-      <IndustryUseCases />
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+      <div id="use-cases">
+        <IndustryUseCases />
+      </div>
       <div id="features">
         <FeatureGrid />
         <PlatformSpecs />

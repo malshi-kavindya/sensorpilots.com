@@ -127,13 +127,13 @@ export default function HeroSection() {
 
           <div className="flex gap-2.5 flex-wrap items-center">
             <Link
-              to="/#contact"
+              to="/product"
               className="flex items-center gap-[7px] px-7 py-[13px] bg-[#e87040] hover:bg-[#cf5e30] rounded-lg text-white text-[15px] font-extrabold no-underline transition-all duration-200 hover:-translate-y-[1px]"
             >
               Start Now
             </Link>
             <Link
-              to="/product"
+              to="/#command-center"
               className="flex items-center gap-[7px] px-[26px] py-3 border-[1.5px] border-white/20 hover:border-white/48 rounded-lg text-[rgba(237,245,250,0.82)] text-[15px] font-bold no-underline transition-all duration-200 hover:-translate-y-[1px]"
             >
               Explore Platform <span className="opacity-65 text-[16px]">›</span>
@@ -194,9 +194,9 @@ export default function HeroSection() {
                 </div>
               ))}
             </div>
-            <button className="mt-3 w-full py-2 bg-white/5 border-[0.5px] border-white/10 rounded-lg text-[rgba(237,245,250,0.5)] text-[12px] cursor-pointer hover:bg-white/10 transition-colors">
+            <Link to="/#contact" className="mt-3 w-full py-2 bg-white/5 border-[0.5px] border-white/10 rounded-lg text-[rgba(237,245,250,0.5)] text-[12px] no-underline cursor-pointer hover:bg-white/10 transition-colors flex items-center justify-center">
               Book a call →
-            </button>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -241,18 +241,13 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="rounded-[13px] p-[15px_17px] backdrop-blur-[6px] bg-white/4 border-[0.5px] border-white/10"
           >
-            <div className="text-[13px] font-bold text-[rgba(237,245,250,0.78)] mb-[2px]">Book a Demo</div>
-            <div className="font-mono text-[10px] text-[rgba(175,205,218,0.35)] mb-[10px] tracking-[0.03em]">Enter email · we'll contact you</div>
-            <div className="flex items-center bg-white/5 border-[0.5px] border-white/10 rounded-lg pr-[6px] pl-[10px]">
-              <input
-                type="email"
-                placeholder="your@company.com"
-                className="flex-1 bg-transparent border-none outline-none text-[12px] text-[rgba(237,245,250,0.6)] font-mono py-[9px] min-w-0 placeholder:text-[rgba(175,205,218,0.22)]"
-              />
-              <button className="w-[26px] h-[26px] bg-[#e87040] border-none rounded-md text-white text-[14px] cursor-pointer flex items-center justify-center flex-shrink-0">
-                →
-              </button>
-            </div>
+            <div className="text-[13px] font-bold text-[rgba(237,245,250,0.78)] mb-[10px]">Book a Demo</div>
+            <Link
+              to="/#contact"
+              className="flex items-center justify-center gap-2 w-full h-[38px] bg-[#e87040] rounded-md text-white text-[13px] font-bold no-underline hover:bg-[#cf5e30] transition-colors"
+            >
+              Get Started →
+            </Link>
           </motion.div>
         </div>
       </div>

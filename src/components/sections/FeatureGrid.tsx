@@ -3,7 +3,11 @@ export default function FeatureGrid() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.fg-root{background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.fg-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.fg-bg{position:absolute;inset:0;pointer-events:none}
+.fg-grid-lines{position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px);background-size:80px 80px}
+.fg-glow1{position:absolute;top:33%;left:25%;width:384px;height:384px;border-radius:50%;background:rgba(16,76,100,0.08);filter:blur(120px)}
+.fg-glow2{position:absolute;bottom:25%;right:33%;width:320px;height:320px;border-radius:50%;background:rgba(16,76,100,0.05);filter:blur(100px)}
 .fg-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .fg-section-tag::before,.fg-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .fg-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
@@ -38,7 +42,12 @@ export default function FeatureGrid() {
       <h2 className="sr-only">Core features — eight pillars of industrial intelligence</h2>
 
       <div className="fg-root">
-        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
+        <div className="fg-bg">
+          <div className="fg-grid-lines" />
+          <div className="fg-glow1" />
+          <div className="fg-glow2" />
+        </div>
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px',position:'relative',zIndex:2}}>
         <div className="fg-section-tag">Core Features</div>
         <h2 className="fg-title">Core Features</h2>
         <p className="fg-sub">Eight pillars of industrial intelligence — from raw ingestion to actionable AI output</p>
@@ -47,7 +56,11 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">01</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-wifi" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M1 12 Q4.5 4 9 12 T17 12" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Ingestion</div>
                 <div className="fg-card-title">Sensor Ingestion Engine</div>
@@ -63,7 +76,11 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">02</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-brain" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <polygon points="9,1 16,5.5 16,12.5 9,17 2,12.5 2,5.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">AI Models</div>
                 <div className="fg-card-title">Predictive AI Models</div>
@@ -79,7 +96,12 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">03</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-gauge" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                  <circle cx="9" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Health Scoring</div>
                 <div className="fg-card-title">Machine Health Scores</div>
@@ -95,7 +117,15 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">04</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-clock" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                  <line x1="9" y1="4" x2="9" y2="7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  <line x1="9" y1="11" x2="9" y2="14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  <line x1="4" y1="9" x2="7" y2="9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                  <line x1="11" y1="9" x2="14" y2="9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Forecasting</div>
                 <div className="fg-card-title">Failure Prediction</div>
@@ -111,7 +141,12 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">05</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-database" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M9 2 L16 14 L2 14 Z" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round" />
+                  <line x1="9" y1="7" x2="9" y2="11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Detection</div>
                 <div className="fg-card-title">Anomaly Detection</div>
@@ -127,7 +162,13 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">06</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-chart-bar" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="2" y="10" width="3" height="6" rx="0.5" stroke="currentColor" strokeWidth="1.1" fill="none" />
+                  <rect x="7.5" y="5" width="3" height="11" rx="0.5" stroke="currentColor" strokeWidth="1.1" fill="none" />
+                  <rect x="13" y="7" width="3" height="9" rx="0.5" stroke="currentColor" strokeWidth="1.1" fill="none" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Analytics</div>
                 <div className="fg-card-title">Real-Time Analytics</div>
@@ -143,7 +184,11 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">07</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-activity" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M1 13 Q3 9 5 13 T9 7 T13 13 T17 9" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Monitoring</div>
                 <div className="fg-card-title">Asset Monitoring</div>
@@ -159,7 +204,16 @@ export default function FeatureGrid() {
           <div className="fg-card">
             <span className="fg-card-num">08</span>
             <div className="fg-top">
-              <div className="fg-icon-wrap"><i className="ti ti-plug" aria-hidden="true" /></div>
+              <div className="fg-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="3" y="3" width="12" height="12" rx="2" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                  <circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1.1" fill="none" />
+                  <line x1="9" y1="2" x2="9" y2="5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                  <line x1="9" y1="13" x2="9" y2="16" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                  <line x1="2" y1="9" x2="5" y2="9" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                  <line x1="13" y1="9" x2="16" y2="9" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+                </svg>
+              </div>
               <div className="fg-title-block">
                 <div className="fg-card-proto">Integrations</div>
                 <div className="fg-card-title">Industrial Integrations</div>

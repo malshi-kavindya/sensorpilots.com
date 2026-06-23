@@ -3,7 +3,11 @@ export default function PlatformOverview() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.po-root{background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.po-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.po-bg{position:absolute;inset:0;pointer-events:none}
+.po-grid-lines{position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px);background-size:80px 80px}
+.po-glow1{position:absolute;top:33%;left:25%;width:384px;height:384px;border-radius:50%;background:rgba(16,76,100,0.08);filter:blur(120px)}
+.po-glow2{position:absolute;bottom:25%;right:33%;width:320px;height:320px;border-radius:50%;background:rgba(16,76,100,0.05);filter:blur(100px)}
 .po-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .po-section-tag::before,.po-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .po-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
@@ -20,7 +24,9 @@ export default function PlatformOverview() {
 .node-circle:hover i{color:#e87040}
 .node-circle.highlight{border-color:rgba(232,112,64,0.6);background:rgba(232,112,64,0.07)}
 .node-circle.highlight i{color:#e87040}
-.node-num{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:#e87040;font-family:'IBM Plex Mono',monospace;font-size:8px;font-weight:500;color:#fff;display:flex;align-items:center;justify-content:center}
+.node-circle .num{font-family:'IBM Plex Sans',sans-serif;font-size:18px;font-weight:700}
+.node-circle .num-teal{color:#1d7a9a}
+.node-circle .num-copper{color:#e87040}
 .node-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(175,205,218,0.35);letter-spacing:0.07em;text-transform:uppercase;text-align:center}
 .pipeline-node:hover .node-label{color:rgba(175,205,218,0.65)}
 .divider-row{display:flex;align-items:center;gap:16px;margin-bottom:48px}
@@ -61,7 +67,12 @@ export default function PlatformOverview() {
       <h2 className="sr-only">Platform architecture and intelligence engine — six core AI capabilities from sensor to insight</h2>
 
       <div className="po-root">
-        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
+        <div className="po-bg">
+          <div className="po-grid-lines" />
+          <div className="po-glow1" />
+          <div className="po-glow2" />
+        </div>
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px',position:'relative',zIndex:2}}>
         <div className="po-section-tag">Platform Architecture</div>
         <h2 className="po-title">Architecture &amp; Intelligence Engine</h2>
         <p className="po-sub">From raw sensor signals to predictive maintenance intelligence — six core AI capabilities in a unified pipeline</p>
@@ -71,27 +82,27 @@ export default function PlatformOverview() {
           <div className="pipeline-line-animated"><div className="pipeline-dashes" /></div>
 
           <div className="pipeline-node">
-            <div className="node-circle"><span className="node-num">1</span><i className="ti ti-building-factory-2" aria-hidden="true" /></div>
+            <div className="node-circle"><span className="num num-teal">1</span></div>
             <span className="node-label">Machines</span>
           </div>
           <div className="pipeline-node">
-            <div className="node-circle"><span className="node-num">2</span><i className="ti ti-wifi" aria-hidden="true" /></div>
+            <div className="node-circle"><span className="num num-teal">2</span></div>
             <span className="node-label">IoT Sensors</span>
           </div>
           <div className="pipeline-node">
-            <div className="node-circle"><span className="node-num">3</span><i className="ti ti-database" aria-hidden="true" /></div>
+            <div className="node-circle"><span className="num num-teal">3</span></div>
             <span className="node-label">Data Pipeline</span>
           </div>
           <div className="pipeline-node">
-            <div className="node-circle highlight"><span className="node-num">4</span><i className="ti ti-cpu" aria-hidden="true" /></div>
+            <div className="node-circle highlight"><span className="num num-copper">4</span></div>
             <span className="node-label">NVIDIA AI</span>
           </div>
           <div className="pipeline-node">
-            <div className="node-circle highlight"><span className="node-num">5</span><i className="ti ti-brain" aria-hidden="true" /></div>
+            <div className="node-circle highlight"><span className="num num-copper">5</span></div>
             <span className="node-label">AI Models</span>
           </div>
           <div className="pipeline-node">
-            <div className="node-circle highlight"><span className="node-num">6</span><i className="ti ti-activity" aria-hidden="true" /></div>
+            <div className="node-circle highlight"><span className="num num-copper">6</span></div>
             <span className="node-label">Intel.</span>
           </div>
         </div>
@@ -114,7 +125,11 @@ export default function PlatformOverview() {
           <div className="bcard featured">
             <div>
               <div className="bcard-tag">Core Capability</div>
-              <div className="bcard-icon-wrap"><i className="ti ti-brain" aria-hidden="true" /></div>
+              <div className="bcard-icon-wrap">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <polygon points="9,1 16,5.5 16,12.5 9,17 2,12.5 2,5.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                </svg>
+              </div>
               <div className="bcard-title">Predictive Maintenance</div>
               <div className="bcard-desc">AI models forecast equipment failures before they occur, giving maintenance teams the lead time to act — not react. Combines vibration, thermal, and operational signals into a single failure probability score.</div>
             </div>
@@ -125,31 +140,57 @@ export default function PlatformOverview() {
           </div>
 
           <div className="bcard wide">
-            <div className="bcard-icon-wrap"><i className="ti ti-activity" aria-hidden="true" /></div>
+            <div className="bcard-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M1 12 Q4.5 4 9 12 T17 12" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+              </svg>
+            </div>
             <div className="bcard-title">Sensor Analytics</div>
             <div className="bcard-desc">Real-time processing of multi-sensor streams at scale</div>
           </div>
 
           <div className="bcard wide">
-            <div className="bcard-icon-wrap"><i className="ti ti-gauge" aria-hidden="true" /></div>
+            <div className="bcard-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                <circle cx="9" cy="9" r="2.5" stroke="currentColor" strokeWidth="1.2" fill="none" />
+              </svg>
+            </div>
             <div className="bcard-title">Machine Health</div>
             <div className="bcard-desc">Continuous health scoring across all assets</div>
           </div>
 
           <div className="bcard normal">
-            <div className="bcard-icon-wrap"><i className="ti ti-alert-triangle" aria-hidden="true" /></div>
+            <div className="bcard-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 2 L16 14 L2 14 Z" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinejoin="round" />
+                <line x1="9" y1="7" x2="9" y2="11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+            </div>
             <div className="bcard-title">Anomaly Detection</div>
             <div className="bcard-desc">Statistical and ML-based outlier identification</div>
           </div>
 
           <div className="bcard normal">
-            <div className="bcard-icon-wrap"><i className="ti ti-clock" aria-hidden="true" /></div>
+            <div className="bcard-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.2" fill="none" />
+                <line x1="9" y1="4" x2="9" y2="7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="9" y1="11" x2="9" y2="14" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="4" y1="9" x2="7" y2="9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="11" y1="9" x2="14" y2="9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+              </svg>
+            </div>
             <div className="bcard-title">Failure Prediction</div>
             <div className="bcard-desc">Time-to-failure estimates with confidence intervals</div>
           </div>
 
           <div className="bcard normal">
-            <div className="bcard-icon-wrap"><i className="ti ti-bulb" aria-hidden="true" /></div>
+            <div className="bcard-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 1 L11.5 6.5 L17 7 L13 11 L14 17 L9 14 L4 17 L5 11 L1 7 L6.5 6.5 Z" stroke="currentColor" strokeWidth="1.1" fill="none" strokeLinejoin="round" />
+              </svg>
+            </div>
             <div className="bcard-title">Industrial Insights</div>
             <div className="bcard-desc">Actionable intelligence for maintenance teams</div>
           </div>

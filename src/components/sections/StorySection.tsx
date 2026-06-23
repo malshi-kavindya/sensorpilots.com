@@ -4,6 +4,12 @@ export default function StorySection() {
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
 .st-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.st-bg{position:absolute;inset:0;pointer-events:none}
+.st-grid{position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px);background-size:80px 80px}
+.st-glow1{position:absolute;top:33%;left:25%;width:384px;height:384px;border-radius:50%;background:rgba(16,76,100,0.08);filter:blur(120px)}
+.st-glow2{position:absolute;bottom:25%;right:33%;width:320px;height:320px;border-radius:50%;background:rgba(16,76,100,0.05);filter:blur(100px)}
+.st-watermark{position:absolute;left:0;top:50%;transform:translateY(-50%);pointer-events:none;user-select:none;overflow:hidden}
+.st-watermark span{font-size:clamp(6rem,18vw,16rem);font-weight:900;letter-spacing:-0.03em;line-height:1;color:rgba(255,255,255,0.025);white-space:nowrap;font-family:system-ui,sans-serif}
 .st-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .st-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;margin-bottom:22px}
 .st-tag::before{content:'';display:block;width:28px;height:1px;background:rgba(232,112,64,0.35)}
@@ -39,6 +45,16 @@ export default function StorySection() {
       <h2 className="sr-only">SensorPilots company story — from factory floor to AI platform</h2>
 
       <div className="st-root">
+        {/* Background decorative elements */}
+        <div className="st-bg">
+          <div className="st-grid" />
+          <div className="st-glow1" />
+          <div className="st-glow2" />
+        </div>
+        {/* Oversized watermark */}
+        <div className="st-watermark">
+          <span>STORY</span>
+        </div>
         <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
         <div className="st-content">
           <div className="st-left">

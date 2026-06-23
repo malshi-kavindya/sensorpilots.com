@@ -229,6 +229,20 @@ export default function PricingTiers() {
 
               {/* CTA */}
               {tier.priceMonthly ? (
+                tier.name === 'Starter' ? (
+                  <Link
+                    to="/product"
+                    className={`group/btn relative w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold overflow-hidden transition-all duration-300 ${
+                      tier.highlighted
+                        ? 'bg-industrial-copper hover:bg-industrial-copper/85 text-text-primary'
+                        : 'bg-white/[0.07] hover:bg-white/[0.12] text-text-primary border border-white/[0.1] hover:border-white/20'
+                    }`}
+                  >
+                    <span className="absolute inset-0 -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                    <span className="relative">{tier.cta}</span>
+                    <ArrowRight className="relative w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                ) : (
                 <button
                   onClick={() => setSelectedPlan({
                     name: tier.name,
@@ -246,6 +260,7 @@ export default function PricingTiers() {
                   <span className="relative">{tier.cta}</span>
                   <ArrowRight className="relative w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
                 </button>
+                )
               ) : (
                 <Link
                   to="/#contact"

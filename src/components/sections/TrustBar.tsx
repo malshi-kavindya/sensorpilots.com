@@ -16,8 +16,14 @@ export default function TrustBar() {
   ];
 
   return (
-    <section ref={ref} className="py-16 border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-6">
+    <section ref={ref} className="relative py-16 border-y border-white/5 overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-primary-dark-teal/8 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-primary-dark-teal/5 blur-[100px]" />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}

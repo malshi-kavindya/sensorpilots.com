@@ -150,7 +150,7 @@ function PricingTiers() {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact"
+              <Link to={tier.name === 'Starter' ? '/product' : '/contact'}
                 className={`block text-center py-3 rounded-lg font-semibold text-sm transition-all ${tier.highlighted ? 'bg-industrial-copper hover:bg-industrial-copper/80 text-text-primary' : 'bg-white/10 hover:bg-white/20 text-text-primary border border-white/10'}`}>
                 {tier.cta}
               </Link>

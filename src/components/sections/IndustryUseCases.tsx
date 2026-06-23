@@ -3,7 +3,13 @@ export default function IndustryUseCases() {
     <>
       <style>{`
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;700;900&display=swap');
-.iu-root{background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%}
+.iu-root{position:relative;background:#0b1820;padding:80px 0 88px;font-family:'IBM Plex Sans',sans-serif;width:100%;overflow:hidden}
+.iu-bg{position:absolute;inset:0;pointer-events:none}
+.iu-grid-lines{position:absolute;inset:0;opacity:0.03;background-image:linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px);background-size:80px 80px}
+.iu-glow1{position:absolute;top:33%;left:25%;width:384px;height:384px;border-radius:50%;background:rgba(16,76,100,0.08);filter:blur(120px)}
+.iu-glow2{position:absolute;bottom:25%;right:33%;width:320px;height:320px;border-radius:50%;background:rgba(16,76,100,0.05);filter:blur(100px)}
+.iu-watermark{position:absolute;left:0;top:50%;transform:translateY(-50%);pointer-events:none;user-select:none;overflow:hidden}
+.iu-watermark span{font-size:clamp(6rem,18vw,16rem);font-weight:900;letter-spacing:-0.03em;line-height:1;color:rgba(255,255,255,0.025);white-space:nowrap;font-family:system-ui,sans-serif}
 .iu-section-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(232,112,64,0.65);display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:22px}
 .iu-section-tag::before,.iu-section-tag::after{content:'';display:block;width:32px;height:1px;background:rgba(232,112,64,0.28)}
 .iu-title{font-size:36px;font-weight:900;color:#edf2f5;text-align:center;line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
@@ -27,7 +33,7 @@ export default function IndustryUseCases() {
 .iu-card-foot{margin-top:20px;display:flex;align-items:center;gap:6px;opacity:0;transform:translateY(4px);transition:opacity 0.22s,transform 0.22s}
 .iu-card:hover .iu-card-foot{opacity:1;transform:translateY(0)}
 .iu-card-foot-line{flex:1;height:0.5px;background:rgba(232,112,64,0.25)}
-.iu-card-foot-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(232,112,64,0.5);letter-spacing:0.08em;white-space:nowrap}
+
 .iu-bottom{display:flex;justify-content:center;margin-top:48px}
 .iu-stat-row{display:flex;gap:0;border:0.5px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden}
 .iu-stat{padding:18px 36px;display:flex;flex-direction:column;align-items:center;gap:3px;border-right:0.5px solid rgba(255,255,255,0.06)}
@@ -39,7 +45,17 @@ export default function IndustryUseCases() {
       <h2 className="sr-only">Industry use cases — predictive AI across six industrial sectors</h2>
 
       <div className="iu-root">
-        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px'}}>
+        {/* Background decorative elements */}
+        <div className="iu-bg">
+          <div className="iu-grid-lines" />
+          <div className="iu-glow1" />
+          <div className="iu-glow2" />
+        </div>
+        {/* Oversized watermark */}
+        <div className="iu-watermark">
+          <span>USE CASES</span>
+        </div>
+        <div style={{maxWidth:1280,margin:'0 auto',padding:'0 24px',position:'relative',zIndex:2}}>
         <div className="iu-section-tag">Use Cases</div>
         <h2 className="iu-title">Industry Use Cases</h2>
         <p className="iu-sub">Proven intelligence across industrial sectors — from discrete manufacturing to grid-scale utilities</p>
@@ -52,7 +68,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Manufacturing</div>
             <div className="iu-card-title">Manufacturing Plants</div>
             <div className="iu-card-desc">Predictive maintenance across assembly lines, CNC machines, and robotics — zero unplanned downtime.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
 
           <div className="iu-card">
@@ -62,7 +78,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Automotive</div>
             <div className="iu-card-title">Automotive Production</div>
             <div className="iu-card-desc">Real-time quality monitoring on stamping, welding, and painting operations at line speed.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
 
           <div className="iu-card">
@@ -72,7 +88,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Energy</div>
             <div className="iu-card-title">Energy Facilities</div>
             <div className="iu-card-desc">Turbine and generator health monitoring for reliable power generation at any scale.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
 
           <div className="iu-card">
@@ -82,7 +98,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Heavy Industry</div>
             <div className="iu-card-title">Industrial Equipment</div>
             <div className="iu-card-desc">Heavy machinery and construction equipment failure prediction before it stops a site.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
 
           <div className="iu-card">
@@ -92,7 +108,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Utilities</div>
             <div className="iu-card-title">Utilities</div>
             <div className="iu-card-desc">Grid infrastructure and transformer monitoring at scale across distributed networks.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
 
           <div className="iu-card">
@@ -102,7 +118,7 @@ export default function IndustryUseCases() {
             <div className="iu-card-sector">Industry 4.0</div>
             <div className="iu-card-title">Smart Factories</div>
             <div className="iu-card-desc">End-to-end Industry 4.0 intelligence and automation — from edge sensor to enterprise dashboard.</div>
-            <div className="iu-card-foot"><div className="iu-card-foot-line" /><span className="iu-card-foot-label">Explore →</span></div>
+            <div className="iu-card-foot"><div className="iu-card-foot-line" /></div>
           </div>
         </div>
 

@@ -13,6 +13,12 @@ export default function FinalCTA() {
       <div className="absolute inset-0 opacity-20" style={{
         backgroundImage: `radial-gradient(circle at 30% 50%, rgba(16, 76, 100, 0.3), transparent 50%), radial-gradient(circle at 70% 50%, rgba(192, 117, 77, 0.3), transparent 50%)`,
       }} />
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-primary-dark-teal/8 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-primary-dark-teal/5 blur-[100px]" />
+      </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div

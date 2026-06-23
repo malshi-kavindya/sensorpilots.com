@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Search, ArrowRight, Calendar, Clock, BookOpen } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
+import BlogModal from '../components/BlogModal';
 
 const categories = ['All', 'Industrial AI', 'Architecture', 'Strategy', 'Analytics', 'AI Research', 'Integration', 'Technology', 'Operations', 'Energy', 'Automotive', 'Engineering', 'Research'];
 
@@ -43,6 +44,7 @@ function BlogContent() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
+  const [selectedPost, setSelectedPost] = useState<typeof blogPosts[number] | null>(null);
 
   const filtered = blogPosts.filter((post) => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -91,6 +93,7 @@ function BlogContent() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.05 }}
+              onClick={() => setSelectedPost(post)}
               className="group p-6 rounded-xl border border-white/5 bg-white/5 hover:border-white/10 hover:bg-white/10 transition-all duration-300 cursor-pointer"
             >
               <div className="flex items-center gap-3 mb-4">
@@ -128,6 +131,8 @@ function BlogContent() {
           </div>
         )}
       </div>
+
+      <BlogModal post={selectedPost} onClose={() => setSelectedPost(null)} />
     </section>
   );
 }
