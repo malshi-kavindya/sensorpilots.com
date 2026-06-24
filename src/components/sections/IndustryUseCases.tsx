@@ -28,9 +28,9 @@ export default function IndustryUseCases() {
 .iu-card:hover .iu-card-index{color:rgba(232,112,64,0.35)}
 .iu-corner-accent{position:absolute;bottom:0;right:0;width:80px;height:80px;border-top-left-radius:80px;opacity:0;transition:opacity 0.3s}
 .iu-card:hover .iu-corner-accent{opacity:1}
-.iu-icon-wrap{width:40px;height:40px;border-radius:8px;border:0.5px solid rgba(16,76,100,0.35);background:rgba(16,76,100,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:border-color 0.22s,background 0.22s}
+.iu-icon-wrap{width:52px;height:52px;border-radius:10px;border:0.5px solid rgba(16,76,100,0.35);background:rgba(16,76,100,0.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px;transition:border-color 0.22s,background 0.22s}
 .iu-card:hover .iu-icon-wrap{border-color:rgba(232,112,64,0.45);background:rgba(232,112,64,0.1)}
-.iu-icon-wrap i{font-size:17px;color:rgba(16,76,100,0.9);transition:color 0.22s}
+.iu-icon-wrap i{font-size:22px;color:rgba(16,76,100,0.9);transition:color 0.22s}
 .iu-card:hover .iu-icon-wrap i{color:#e87040}
 .iu-icon-wrap img{opacity:0.8;transition:opacity 0.22s}
 .iu-card:hover .iu-icon-wrap img{opacity:1}
@@ -73,7 +73,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">01</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><img src={manufacturingIcon} alt="Manufacturing" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={manufacturingIcon} alt="Manufacturing" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Manufacturing</div>
             <div className="iu-card-title">Manufacturing Plants</div>
             <div className="iu-card-desc">Predictive maintenance across assembly lines, CNC machines, and robotics — zero unplanned downtime.</div>
@@ -83,7 +83,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">02</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><img src={automotiveIcon} alt="Automotive" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={automotiveIcon} alt="Automotive" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Automotive</div>
             <div className="iu-card-title">Automotive Production</div>
             <div className="iu-card-desc">Real-time quality monitoring on stamping, welding, and painting operations at line speed.</div>
@@ -93,7 +93,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">03</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><img src={energyIcon} alt="Energy" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={energyIcon} alt="Energy" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Energy</div>
             <div className="iu-card-title">Energy Facilities</div>
             <div className="iu-card-desc">Turbine and generator health monitoring for reliable power generation at any scale.</div>
@@ -103,7 +103,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">04</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><img src={heavyIndustryIcon} alt="Heavy Industry" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={heavyIndustryIcon} alt="Heavy Industry" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Heavy Industry</div>
             <div className="iu-card-title">Industrial Equipment</div>
             <div className="iu-card-desc">Heavy machinery and construction equipment failure prediction before it stops a site.</div>
@@ -113,7 +113,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">05</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(16,76,100,0.18)' }} />
-            <div className="iu-icon-wrap"><img src={utilitiesIcon} alt="Utilities" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={utilitiesIcon} alt="Utilities" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Utilities</div>
             <div className="iu-card-title">Utilities</div>
             <div className="iu-card-desc">Grid infrastructure and transformer monitoring at scale across distributed networks.</div>
@@ -123,7 +123,7 @@ export default function IndustryUseCases() {
           <div className="iu-card">
             <span className="iu-card-index">06</span>
             <div className="iu-corner-accent" style={{ background: 'rgba(232,112,64,0.12)' }} />
-            <div className="iu-icon-wrap"><img src={smartFactoryIcon} alt="Smart Factory" className="w-[18px] h-[18px] object-contain" /></div>
+            <div className="iu-icon-wrap"><img src={smartFactoryIcon} alt="Smart Factory" className="w-[26px] h-[26px] object-contain" /></div>
             <div className="iu-card-sector">Industry 4.0</div>
             <div className="iu-card-title">Smart Factories</div>
             <div className="iu-card-desc">End-to-end Industry 4.0 intelligence and automation — from edge sensor to enterprise dashboard.</div>

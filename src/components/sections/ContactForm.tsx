@@ -13,12 +13,12 @@ const contactDetails = [
   {
     icon: Phone,
     label: 'Phone',
-    lines: ['+1 (617) 555-0142', '+49 30 5555 8910'],
+    lines: ['+1 (650) 532-8914'],
   },
   {
     icon: MapPin,
     label: 'Offices',
-    lines: ['100 Industrial Way, Suite 400', 'Boston, MA 02110, USA'],
+    lines: ['611 Gateway Blvd', 'South San Francisco, CA 94080, USA'],
   },
   {
     icon: Clock,

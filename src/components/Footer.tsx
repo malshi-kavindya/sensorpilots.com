@@ -192,7 +192,7 @@ export default function Footer() {
       <div className="relative border-t border-white/[0.05]">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[11px] text-soft-industrial-gray/40 tracking-wide">
-            © {new Date().getFullYear()} SensorPilots, Inc. All rights reserved.
+            © {new Date().getFullYear()} SensorPilots Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-1">
             {[

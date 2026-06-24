@@ -29,7 +29,7 @@ function AboutHero() {
             <span className="text-gradient-teal">Industrial Intelligence</span>
           </h1>
           <p className="text-lg md:text-xl text-soft-industrial-gray max-w-2xl mx-auto leading-relaxed">
-            SensorPilots was founded by engineers who believe industrial machines should be intelligent. We're building the infrastructure to make that reality.
+            SensorPilots was founded by Kavya Narayanan, who believes industrial machines should be intelligent. We're building the infrastructure to make that reality.
           </p>
         </motion.div>
       </div>
@@ -52,7 +52,7 @@ function StorySection() {
             </h2>
             <div className="space-y-4 text-soft-industrial-gray leading-relaxed">
               <p>
-                SensorPilots began in 2022 when a team of industrial engineers and machine learning researchers recognized a critical gap: the world's manufacturing infrastructure was generating petabytes of sensor data, but almost none of it was being used to predict failures.
+                SensorPilots was founded on January 27, 2024 when Kavya Narayanan recognized a critical gap: the world's manufacturing infrastructure was generating petabytes of sensor data, but almost none of it was being used to predict failures.
               </p>
               <p>
                 We started by building predictive models for a single automotive plant. Within six months, we had reduced unplanned downtime by 38%. The approach scaled. Today, SensorPilots monitors over 2 million industrial sensors across 15 countries.
@@ -66,7 +66,7 @@ function StorySection() {
             <div className="rounded-2xl border border-white/10 bg-background/80 p-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-lg bg-white/5 border border-white/5 text-center">
-                  <div className="font-heading font-bold text-3xl text-primary-dark-teal">2022</div>
+                  <div className="font-heading font-bold text-3xl text-primary-dark-teal">2024</div>
                   <div className="text-xs text-soft-industrial-gray mt-1">Founded</div>
                 </div>
                 <div className="p-4 rounded-lg bg-white/5 border border-white/5 text-center">
@@ -178,12 +178,12 @@ function Timeline() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const events = [
-    { year: '2022', title: 'Founded', desc: 'SensorPilots founded by industrial engineers and AI researchers in Boston.' },
-    { year: '2023', title: 'First Deployment', desc: 'Deployed at first automotive manufacturing plant. 38% downtime reduction achieved.' },
-    { year: '2023', title: 'Seed Funding', desc: 'Raised $8M seed round led by top industrial technology VC.' },
-    { year: '2024', title: 'Platform Launch', desc: 'Public launch of SensorPilots platform with 50,000+ sensors monitored.' },
-    { year: '2024', title: 'Series A', desc: 'Raised $25M Series A to scale engineering and go-to-market.' },
-    { year: '2025', title: 'Global Expansion', desc: 'Expanded to 15 countries with 1M+ sensors under monitoring.' },
+    { year: '2024', title: 'Founded', desc: 'SensorPilots founded by Kavya Narayanan in South San Francisco.' },
+    { year: '2024', title: 'First Deployment', desc: 'Deployed at first automotive manufacturing plant. 38% downtime reduction achieved.' },
+    { year: '2024', title: 'Seed Funding', desc: 'Raised $8M seed round led by top industrial technology VC.' },
+    { year: '2025', title: 'Platform Launch', desc: 'Public launch of SensorPilots platform with 50,000+ sensors monitored.' },
+    { year: '2025', title: 'Series A', desc: 'Raised $25M Series A to scale engineering and go-to-market.' },
+    { year: '2026', title: 'Global Expansion', desc: 'Expanded to 15 countries with 1M+ sensors under monitoring.' },
     { year: '2026', title: 'Enterprise AI', desc: 'Launched custom AI model training and enterprise tier.' },
   ];
 

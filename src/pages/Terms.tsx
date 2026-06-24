@@ -92,7 +92,7 @@ export default function Terms() {
 
             <div>
               <h2 className="font-heading font-bold text-xl text-text-primary mb-3">10. Contact</h2>
-              <p className="mb-3">For questions about these Terms of Service, please contact us at legal@sensorpilots.com or write to us at 100 Industrial Way, Suite 400, Boston, MA 02110, USA.</p>
+              <p className="mb-3">For questions about these Terms of Service, please contact us at legal@sensorpilots.com or write to us at 611 Gateway Blvd, South San Francisco, CA 94080, USA.</p>
             </div>
           </div>
         </div>

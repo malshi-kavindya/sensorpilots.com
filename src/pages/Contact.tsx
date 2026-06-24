@@ -76,8 +76,7 @@ function ContactForm() {
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-text-primary mb-1">Phone</h4>
-                  <p className="text-sm text-soft-industrial-gray">+1 (617) 555-0142</p>
-                  <p className="text-sm text-soft-industrial-gray">+49 30 5555 8910</p>
+                  <p className="text-sm text-soft-industrial-gray">+1 (650) 532-8914</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -86,8 +85,8 @@ function ContactForm() {
                 </div>
                 <div>
                   <h4 className="font-heading font-semibold text-text-primary mb-1">Offices</h4>
-                  <p className="text-sm text-soft-industrial-gray">100 Industrial Way, Suite 400</p>
-                  <p className="text-sm text-soft-industrial-gray">Boston, MA 02110, USA</p>
+                  <p className="text-sm text-soft-industrial-gray">611 Gateway Blvd</p>
+                  <p className="text-sm text-soft-industrial-gray">South San Francisco, CA 94080, USA</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

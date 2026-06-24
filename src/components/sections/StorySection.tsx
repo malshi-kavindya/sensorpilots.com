@@ -61,7 +61,7 @@ export default function StorySection() {
             <div className="st-tag">Company Story</div>
             <h2 className="st-title">From Factory Floor<br />to <em>AI Platform</em></h2>
             <div className="st-body">
-              <p className="st-p">SensorPilots began in 2022 when a team of industrial engineers and ML researchers recognized a critical gap: the world's manufacturing infrastructure was generating <strong>petabytes of sensor data</strong> — but almost none of it was being used to predict failures.</p>
+              <p className="st-p">SensorPilots was founded on January 27, 2024 when Kavya Narayanan recognized a critical gap: the world's manufacturing infrastructure was generating <strong>petabytes of sensor data</strong> — but almost none of it was being used to predict failures.</p>
               <p className="st-p">We started by building predictive models for a single automotive plant. Within six months, we had <strong>reduced unplanned downtime by 38%</strong>. The approach scaled. Today, SensorPilots monitors over 2 million industrial sensors across 15 countries.</p>
               <p className="st-p">Our mission remains unchanged: transform industrial operations through predictive intelligence. <strong>Every machine should know when it needs maintenance before it fails.</strong></p>
             </div>
@@ -71,7 +71,7 @@ export default function StorySection() {
             <div className="st-stat-grid">
               <div className="st-stat">
                 <div className="st-stat-bg" style={{ background: '#104c64' }} />
-                <div className="st-stat-num teal">2022</div>
+                <div className="st-stat-num teal">2024</div>
                 <div className="st-stat-lbl">Founded</div>
               </div>
               <div className="st-stat">
@@ -97,16 +97,16 @@ export default function StorySection() {
               <div className="st-tl-item">
                 <div className="st-tl-dot-col"><div className="st-tl-dot done" /><div className="st-tl-line" /></div>
                 <div className="st-tl-body">
-                  <div className="st-tl-year">2022 — Q1</div>
+                  <div className="st-tl-year">2024 — Q1</div>
                   <div className="st-tl-event">Company Founded</div>
-                  <div className="st-tl-detail">Industrial engineers + ML researchers form SensorPilots in Berlin</div>
+                  <div className="st-tl-detail">Kavya Narayanan founds SensorPilots in South San Francisco</div>
                 </div>
               </div>
 
               <div className="st-tl-item">
                 <div className="st-tl-dot-col"><div className="st-tl-dot done" /><div className="st-tl-line" /></div>
                 <div className="st-tl-body">
-                  <div className="st-tl-year">2022 — Q4</div>
+                  <div className="st-tl-year">2024 — Q2</div>
                   <div className="st-tl-event">First Deployment</div>
                   <div className="st-tl-detail">Automotive plant pilot — 38% reduction in unplanned downtime</div>
                 </div>
@@ -115,16 +115,16 @@ export default function StorySection() {
               <div className="st-tl-item">
                 <div className="st-tl-dot-col"><div className="st-tl-dot done" /><div className="st-tl-line" /></div>
                 <div className="st-tl-body">
-                  <div className="st-tl-year">2023 — Q2</div>
-                  <div className="st-tl-event">Series A · $18M</div>
-                  <div className="st-tl-detail">Scaled to 200k sensors, expanded to 6 countries</div>
+                  <div className="st-tl-year">2024 — Q3</div>
+                  <div className="st-tl-event">Seed · $8M</div>
+                  <div className="st-tl-detail">Seed funding round led by top industrial technology VC</div>
                 </div>
               </div>
 
               <div className="st-tl-item">
                 <div className="st-tl-dot-col"><div className="st-tl-dot active" /><div className="st-tl-line" /></div>
                 <div className="st-tl-body">
-                  <div className="st-tl-year">2024 — Now</div>
+                  <div className="st-tl-year">2025 — Now</div>
                   <div className="st-tl-event">2M+ Sensors · 15 Countries</div>
                   <div className="st-tl-detail">NVIDIA partnership · 150-person team · global deployments</div>
                 </div>
@@ -133,7 +133,7 @@ export default function StorySection() {
               <div className="st-tl-item">
                 <div className="st-tl-dot-col"><div className="st-tl-dot" style={{ background: 'rgba(255,255,255,0.1)', border: '0.5px dashed rgba(255,255,255,0.2)' }} /></div>
                 <div className="st-tl-body">
-                  <div className="st-tl-year">2025 — Roadmap</div>
+                  <div className="st-tl-year">2026 — Roadmap</div>
                   <div className="st-tl-event">Autonomous Maintenance</div>
                   <div className="st-tl-detail">Self-diagnosing, self-scheduling AI maintenance agents</div>
                 </div>

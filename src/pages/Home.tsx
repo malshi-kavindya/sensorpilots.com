@@ -15,6 +15,7 @@ import NewsletterCTA from '../components/sections/NewsletterCTA';
 import StorySection from '../components/sections/StorySection';
 import MissionVision from '../components/sections/MissionVision';
 import ContactForm from '../components/sections/ContactForm';
+import FrequentlyAskedQuestions from '../components/sections/FrequentlyAskedQuestions';
 
 
 /* ────────────────────────────────────────────────
@@ -50,6 +51,7 @@ export default function Home() {
      
       <BlogContent />
       <Testimonials />
+      <FrequentlyAskedQuestions />
       <div id="resources">
         <FinalCTA />
       </div>
