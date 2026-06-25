@@ -5,39 +5,39 @@ import SectionTitle from '../SectionTitle';
 
 const faqs = [
   {
-    question: 'What is SensorPilots?',
+    question: 'What problem does SensorPilots solve?',
     answer:
-      'SensorPilots is an AI-powered predictive maintenance and industrial sensor analytics platform. We help manufacturers monitor equipment health, predict failures before they happen, and optimize maintenance schedules using machine learning.',
+      'SensorPilots eliminates unexpected machine failures by predicting breakdowns early using real-time industrial sensor intelligence.',
   },
   {
-    question: 'How does the predictive maintenance work?',
+    question: 'How accurate are the failure predictions?',
     answer:
-      'Our platform connects to your existing industrial sensors and IoT infrastructure. We ingest real-time vibration, temperature, pressure, and other sensor data, then apply proprietary ML models to detect anomalies and predict equipment failures days or weeks in advance.',
+      'The platform uses AI-driven models trained on industrial sensor patterns to deliver high-confidence predictive maintenance alerts.',
   },
   {
-    question: 'What types of sensors and equipment do you support?',
+    question: 'Can it handle large-scale factory operations?',
     answer:
-      'We support virtually any industrial sensor that generates time-series data, including vibration sensors, temperature sensors, pressure transducers, flow meters, and more. Our platform integrates with common IIoT protocols including MQTT, OPC-UA, Modbus, and BACnet.',
+      'Yes, SensorPilots is designed for enterprise-scale manufacturing environments with thousands of machines and continuous sensor streams.',
   },
   {
-    question: 'How long does implementation take?',
+    question: 'Does it require replacing existing systems?',
     answer:
-      'Most customers are up and running within 2–4 weeks. Our onboarding team handles sensor integration, model configuration, and dashboard setup. For complex enterprise deployments with custom models, timelines typically range from 4–8 weeks.',
+      'No, it integrates seamlessly with existing IoT, SCADA, and PLC systems without disrupting current industrial infrastructure.',
   },
   {
-    question: 'Is my data secure?',
+    question: 'How fast is the real-time monitoring?',
     answer:
-      'Yes. We implement encryption at rest and in transit, SOC 2 compliant infrastructure, role-based access controls, and regular security audits. Your sensor data remains your property and is never shared or sold to third parties.',
+      'SensorPilots processes live sensor streams with low latency to ensure instant anomaly detection and operational visibility.',
   },
   {
-    question: 'What kind of ROI can I expect?',
+    question: 'What kind of failures can it predict?',
     answer:
-      'Our customers typically see a 30–50% reduction in unplanned downtime, 15–25% reduction in maintenance costs, and 10–20% extension in equipment lifespan. Most customers achieve full ROI within 6–12 months of deployment.',
+      'It can detect mechanical degradation, overheating, vibration anomalies, pressure irregularities, and early-stage equipment faults.',
   },
   {
-    question: 'Do you offer custom model training?',
+    question: 'Why is SensorPilots better than traditional maintenance tools?',
     answer:
-      'Yes, our Enterprise AI tier includes custom model training tailored to your specific equipment and operational patterns. Our ML engineers work with your team to develop, validate, and deploy models optimized for your environment.',
+      'Unlike reactive systems, SensorPilots uses AI to forecast failures before they happen, enabling fully proactive industrial maintenance strategies.',
   },
 ];
 
@@ -140,8 +140,8 @@ export default function FrequentlyAskedQuestions() {
           transition={{ duration: 0.5 }}
         >
           <SectionTitle
-            title="Frequently Asked Questions"
-            subtitle="Everything you need to know about SensorPilots"
+            title="Platform Questions Solved"
+            subtitle="Understand SensorPilots in seconds"
             centered
           />
         </motion.div>

@@ -6,55 +6,52 @@ import PayPalModal from '../PayPalModal';
 
 const tiers = [
   {
-    name: 'Starter',
-    priceMonthly: 499,
-    priceAnnual: 399,
-    desc: 'For small teams and pilot deployments',
+    name: 'Starter Pilot',
+    priceMonthly: 99,
+    priceAnnual: 99,
+    desc: 'Build predictive foundations',
     features: [
-      { text: 'Up to 100 sensors', included: true },
-      { text: 'Basic predictive models', included: true },
-      { text: 'Email alerts', included: true },
-      { text: '7-day data retention', included: true },
-      { text: 'Community support', included: true },
-      { text: 'Custom dashboards', included: false },
-      { text: 'SCADA integration', included: false },
-      { text: 'On-premise deployment', included: false },
+      { text: 'Sensor Monitoring', included: true },
+      { text: 'Health Scoring', included: true },
+      { text: 'Failure Alerts', included: true },
+      { text: 'Data Dashboard', included: true },
+      { text: 'Basic Analytics', included: true },
+      { text: 'Email Reports', included: true },
+      { text: 'API Access', included: true },
     ],
     cta: 'Get Started',
     highlighted: false,
   },
   {
-    name: 'Growth',
-    priceMonthly: 2499,
-    priceAnnual: 1999,
-    desc: 'For scaling industrial operations',
+    name: 'Professional Intelligence',
+    priceMonthly: 199,
+    priceAnnual: 199,
+    desc: 'Optimize machine performance',
     features: [
-      { text: 'Up to 2,000 sensors', included: true },
-      { text: 'Advanced AI models', included: true },
-      { text: 'Real-time alerts & SMS', included: true },
-      { text: '90-day data retention', included: true },
-      { text: 'Priority support', included: true },
-      { text: 'Custom dashboards', included: true },
-      { text: 'SCADA integration', included: true },
-      { text: 'On-premise deployment', included: false },
+      { text: 'Predictive Models', included: true },
+      { text: 'Anomaly Detection', included: true },
+      { text: 'Real-Time Insights', included: true },
+      { text: 'Maintenance Planning', included: true },
+      { text: 'Performance Tracking', included: true },
+      { text: 'Custom Alerts', included: true },
+      { text: 'Team Access', included: true },
     ],
     cta: 'Get Started',
     highlighted: true,
   },
   {
-    name: 'Enterprise',
+    name: 'Enterprise Command',
     priceMonthly: null,
     priceAnnual: null,
-    desc: 'For global industrial organizations',
+    desc: 'Transform manufacturing operations',
     features: [
-      { text: 'Unlimited sensors', included: true },
-      { text: 'Custom AI model training', included: true },
-      { text: 'Multi-site deployment', included: true },
-      { text: 'Unlimited data retention', included: true },
-      { text: 'Dedicated success team', included: true },
-      { text: 'On-premise option', included: true },
-      { text: 'SLA guarantee', included: true },
-      { text: 'Custom integrations', included: true },
+      { text: 'Unlimited Assets', included: true },
+      { text: 'SCADA Integration', included: true },
+      { text: 'Advanced Forecasting', included: true },
+      { text: 'Dedicated Support', included: true },
+      { text: 'Private Deployment', included: true },
+      { text: 'Custom Workflows', included: true },
+      { text: 'Enterprise Security', included: true },
     ],
     cta: 'Contact Sales',
     highlighted: false,
@@ -109,8 +106,8 @@ export default function PricingTiers() {
           transition={{ duration: 0.5 }}
         >
           <div className="pt-section-tag">Transparent Pricing</div>
-          <h2 className="pt-title">Scale at your own pace</h2>
-          <p className="pt-sub">From pilot deployments to global enterprise rollouts — a plan built for every stage of your industrial journey.</p>
+          <h2 className="pt-title">Choose Your Intelligence Plan</h2>
+          <p className="pt-sub">Scale predictive maintenance with AI-powered sensor analytics, real-time monitoring, and failure forecasting. Select the plan that matches your operational needs and manufacturing growth goals.</p>
         </motion.div>
 
         {/* Billing toggle */}
@@ -229,7 +226,7 @@ export default function PricingTiers() {
 
               {/* CTA */}
               {tier.priceMonthly ? (
-                tier.name === 'Starter' ? (
+                tier.name === 'Starter Pilot' ? (
                   <Link
                     to="/product"
                     className={`group/btn relative w-full flex items-center justify-center gap-2 py-3.5 rounded-xl text-sm font-semibold overflow-hidden transition-all duration-300 ${
@@ -281,7 +278,8 @@ export default function PricingTiers() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: 0.6 }}
           className="text-center text-[11px] text-soft-industrial-gray/50 mt-8 tracking-wide"
-        >
+        >Need a custom industrial deployment? Contact our team for enterprise pricing and tailored predictive maintenance solutions.
+          <br />
           All plans include a 14-day free trial. No credit card required. Cancel anytime.
         </motion.p>
       </div>

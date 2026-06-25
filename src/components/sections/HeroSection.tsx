@@ -33,20 +33,20 @@ export default function HeroSection() {
           <div className="font-mono text-[11px] text-[rgba(200,220,228,0.35)] tracking-[0.08em] uppercase mb-6 flex items-center gap-2 before:content-[''] before:inline-block before:w-[18px] before:h-[1px] before:bg-[rgba(200,220,228,0.25)]">
             Industrial AI Platform
           </div>
-
+           
           <h1 className="text-[72px] font-black leading-[0.96] text-[#edf2f5] tracking-[0.08em] mb-6">
-            Predictive<br />Maintenance<br />
+            <span className="text-primary-dark-teal">Next-Gen Maintenance</span><br />Through Sensor<br />
             <span className="bg-gradient-to-r from-[#c95a20] via-[#f07038] to-[#c04818] bg-clip-text text-transparent">
               Intelligence
             </span>
           </h1>
 
           <div className="text-[21px] font-extrabold text-[rgba(237,242,245,0.6)] tracking-[-0.02em] mt-6">
-            for Modern Manufacturing
+            Predict. Monitor. Optimize
           </div>
 
           <p className="text-[14px] text-[rgba(175,205,218,0.5)] leading-[1.65] max-w-[350px] my-8">
-            Transform industrial sensor streams into actionable AI-driven maintenance intelligence.
+            Transform vibration, temperature, and machine telemetry data into predictive intelligence that enables proactive maintenance and enhances equipment reliability.
           </p>
 
           <div className="flex gap-2.5 flex-wrap items-center">
