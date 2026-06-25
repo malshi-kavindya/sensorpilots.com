@@ -98,12 +98,14 @@ export default function Product() {
           </p>
 
           <div className="flex gap-2.5 flex-wrap items-center justify-center">
-            <Link
-              to="/product"
+            <a
+              href="https://app.sensorpilots.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-[7px] px-7 py-[13px] bg-[#e87040] hover:bg-[#cf5e30] rounded-lg text-white text-[15px] font-extrabold no-underline transition-all duration-200 hover:-translate-y-[1px]"
             >
               Launch Live Dashboard
-            </Link>
+            </a>
             <Link
               to="/#contact"
               className="flex items-center gap-[7px] px-[26px] py-3 border-[1.5px] border-white/20 hover:border-white/48 rounded-lg text-[rgba(237,245,250,0.82)] text-[15px] font-bold no-underline transition-all duration-200 hover:-translate-y-[1px]"

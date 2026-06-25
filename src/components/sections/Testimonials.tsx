@@ -2,35 +2,45 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import SectionTitle from '../SectionTitle';
 import w1 from '../../assets/icons/w1.png';
-import m1 from '../../assets/icons/m1.png';
+import m1 from '../../assets/icons/M1.png';
 import w2 from '../../assets/icons/w2.png';
+import m2 from '../../assets/icons/M1 (2).png';
+import m3 from '../../assets/icons/M1 (3).png';
 
 const testimonials = [
   {
-    quote: "SensorPilots reduced our unplanned downtime by 42% in the first quarter. The predictive accuracy is unlike anything we've seen.",
-    author: 'Dr. Sarah Chen',
-    role: 'VP of Operations',
-    company: 'Meridian Manufacturing',
-    stat: '42%',
-    statLabel: 'downtime reduction',
-    avatar: w1,
-  },
-  {
-    quote: "The sensor analytics platform gave us visibility into our turbine health we never had before. Real game changer for our maintenance program.",
-    author: 'James Rodriguez',
-    role: 'Chief Engineer',
-    company: 'Apex Energy',
-    stat: '12×',
-    statLabel: 'faster anomaly detection',
+    quote: "SensorPilots detected equipment failures early and significantly reduced downtime. The predictive insights improved our maintenance planning and overall production efficiency across multiple factory lines.",
+    author: 'Robert Hughes',
+    role: 'Maintenance Director',
+    company: 'Automotive Manufacturing',
     avatar: m1,
   },
   {
-    quote: "Deploying SensorPilots across 12 plants was seamless. The AI engine started detecting anomalies within days of sensor connection.",
-    author: 'Priya Patel',
-    role: 'Director of Digital Transformation',
-    company: 'Titan Automotive',
-    stat: '12',
-    statLabel: 'plants deployed',
+    quote: "Real-time sensor analytics transformed our maintenance strategy from reactive to predictive, giving us full visibility into machine health and performance trends.",
+    author: 'Sophia Collins',
+    role: 'VP of Engineering',
+    company: 'Steel Industry',
+    avatar: w1,
+  },
+  {
+    quote: "The platform delivers precise AI-driven alerts that help us prevent costly breakdowns. Our teams now act before issues escalate into failures.",
+    author: 'Alexander Reed',
+    role: 'Chief Operations Officer',
+    company: 'Electronics Manufacturing',
+    avatar: m2,
+  },
+  {
+    quote: "Integration with our IoT infrastructure was seamless. Predictive alerts have already saved substantial operational costs and improved uptime across critical systems.",
+    author: 'Charlotte Evans',
+    role: 'Head of Plant Operations',
+    company: 'Energy Sector',
+    avatar: m3,
+  },
+  {
+    quote: "SensorPilots acts as a centralized intelligence layer for our factory operations, giving us real-time control over every machine and sensor.",
+    author: 'Isabella Morgan',
+    role: 'Chief Industrial Technology Officer',
+    company: 'Smart Manufacturing Company',
     avatar: w2,
   },
 ];
@@ -93,16 +103,6 @@ export default function Testimonials() {
               {/* Top accent line on hover */}
               <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary-dark-teal/0 to-transparent group-hover:via-primary-dark-teal/60 transition-all duration-500" />
 
-              {/* Stat callout */}
-              <div className="flex items-end gap-2">
-                <span className="font-heading font-black text-5xl leading-none text-primary-dark-teal tabular-nums">
-                  {t.stat}
-                </span>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-soft-industrial-gray font-semibold mb-1.5 leading-tight max-w-[80px]">
-                  {t.statLabel}
-                </span>
-              </div>
-
               {/* Quote */}
               <div className="flex-1">
                 <p className="text-text-primary/80 leading-relaxed text-sm">
@@ -115,10 +115,16 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                {t.avatar ? (
+                  <img src={t.avatar} alt={t.author} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-primary-dark-teal/20 border border-primary-dark-teal/30 flex items-center justify-center flex-shrink-0">
+                    <span className="text-sm font-bold text-primary-dark-teal">{t.author.charAt(0)}</span>
+                  </div>
+                )}
                 <div>
                   <p className="text-sm font-semibold text-text-primary leading-tight">{t.author}</p>
-                  <p className="text-[11px] text-soft-industrial-gray mt-0.5">{t.role}</p>
+                  {t.role && <p className="text-[11px] text-soft-industrial-gray mt-0.5">{t.role}</p>}
                   <p className="text-[10px] uppercase tracking-[0.14em] text-primary-dark-teal/70 font-semibold mt-0.5">{t.company}</p>
                 </div>
               </div>
